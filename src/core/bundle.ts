@@ -1,9 +1,29 @@
 import { randomUUID } from "node:crypto";
-import path from "node:path";
 import { promises as fs } from "node:fs";
+import path from "node:path";
 import { buildWorkspaceManifest } from "./manifest";
-import { BUNDLE_SCHEMA_VERSION, BundleContents, BundleInspection, BundleMetadata } from "./schema";
-import { copyDirectory, copyFileInto, ensureDir, pathExists, readTextFile, writeJsonFile, writeTextFile } from "../utils/fs";
+import {
+  BUNDLE_SCHEMA_VERSION,
+  BundleContents,
+  BundleInspection,
+  BundleMetadata,
+  BundleOutcome,
+  BundleValidationReport,
+  GitMetadata,
+  RunnerMetadata
+} from "./schema";
+import { parseEventsJsonl, validateBundleMetadata, validateWorkspaceManifest } from "./validation";
+import {
+  copyDirectory,
+  copyFileInto,
+  ensureDir,
+  getArtifactInfo,
+  pathExists,
+  readJsonFile,
+  readTextFile,
+  writeJsonFile,
+  writeTextFile
+} from "../utils/fs";
 
 export interface PackOptions {
   title: string;
@@ -18,9 +38,13 @@ export interface PackOptions {
   runtime?: string;
   repo?: string;
   commit?: string;
+  branch?: string;
   tags?: string[];
   id?: string;
   createdAt?: string;
+  git?: GitMetadata;
+  runner?: RunnerMetadata;
+  outcome?: BundleOutcome;
 }
 
 export async function createBundle(options: PackOptions): Promise<BundleMetadata> {
@@ -38,24 +62,34 @@ export async function createBundle(options: PackOptions): Promise<BundleMetadata
     runtime: options.runtime,
     repo: options.repo,
     commit: options.commit,
+    branch: options.branch,
     tags: options.tags ?? [],
     artifacts: {
       task: "task.md",
       summary: "summary.md"
-    }
+    },
+    artifactInfo: {},
+    git: options.git,
+    runner: options.runner,
+    outcome: options.outcome
   };
 
   await copyFileInto(path.resolve(options.taskPath), path.join(outputDir, "task.md"));
   await copyFileInto(path.resolve(options.summaryPath), path.join(outputDir, "summary.md"));
 
+  await recordArtifactInfo(metadata, "task", outputDir, "task.md");
+  await recordArtifactInfo(metadata, "summary", outputDir, "summary.md");
+
   if (options.diffPath) {
     metadata.artifacts.diff = "result.diff";
     await copyFileInto(path.resolve(options.diffPath), path.join(outputDir, "result.diff"));
+    await recordArtifactInfo(metadata, "diff", outputDir, "result.diff");
   }
 
   if (options.eventsPath) {
     metadata.artifacts.events = "events.jsonl";
     await copyFileInto(path.resolve(options.eventsPath), path.join(outputDir, "events.jsonl"));
+    await recordArtifactInfo(metadata, "events", outputDir, "events.jsonl");
   }
 
   if (options.workspacePath) {
@@ -69,6 +103,7 @@ export async function createBundle(options: PackOptions): Promise<BundleMetadata
     metadata.artifacts.workspaceManifest = "workspace/manifest.json";
     metadata.artifacts.workspaceFilesDir = "workspace/files";
     await writeJsonFile(path.join(workspaceDir, "manifest.json"), manifest);
+    await recordArtifactInfo(metadata, "workspaceManifest", outputDir, "workspace/manifest.json");
   }
 
   await writeJsonFile(path.join(outputDir, "bundle.json"), metadata);
@@ -77,7 +112,9 @@ export async function createBundle(options: PackOptions): Promise<BundleMetadata
 
 export async function readBundle(bundleDir: string): Promise<BundleContents> {
   const resolvedBundleDir = path.resolve(bundleDir);
-  const metadata = JSON.parse(await readTextFile(path.join(resolvedBundleDir, "bundle.json"))) as BundleMetadata;
+  const metadata = validateBundleMetadata(
+    await readJsonFile<unknown>(path.join(resolvedBundleDir, "bundle.json"))
+  );
   const task = await readTextFile(resolveBundleArtifact(resolvedBundleDir, metadata.artifacts.task));
   const summary = await readTextFile(resolveBundleArtifact(resolvedBundleDir, metadata.artifacts.summary));
 
@@ -94,13 +131,14 @@ export async function readBundle(bundleDir: string): Promise<BundleContents> {
     const eventsPath = resolveBundleArtifact(resolvedBundleDir, metadata.artifacts.events);
     if (await pathExists(eventsPath)) {
       contents.events = await readTextFile(eventsPath);
+      contents.parsedEvents = parseEventsJsonl(contents.events);
     }
   }
 
   if (metadata.artifacts.workspaceManifest) {
     const manifestPath = resolveBundleArtifact(resolvedBundleDir, metadata.artifacts.workspaceManifest);
     if (await pathExists(manifestPath)) {
-      contents.workspaceManifest = JSON.parse(await readTextFile(manifestPath));
+      contents.workspaceManifest = validateWorkspaceManifest(await readJsonFile<unknown>(manifestPath));
     }
   }
 
@@ -140,8 +178,8 @@ export async function createInitTemplate(destinationDir: string): Promise<void> 
   await writeTextFile(
     path.join(resolvedDir, "events.jsonl"),
     [
-      JSON.stringify({ type: "read_file", at: new Date().toISOString(), detail: "Inspected src/app.ts" }),
-      JSON.stringify({ type: "run_command", at: new Date().toISOString(), detail: "npm test" }),
+      JSON.stringify({ type: "read_file", at: new Date().toISOString(), detail: "Inspected src/app.ts", path: "src/app.ts" }),
+      JSON.stringify({ type: "run_command", at: new Date().toISOString(), detail: "npm test", command: "npm test", exitCode: 0 }),
       JSON.stringify({ type: "write_diff", at: new Date().toISOString(), detail: "Captured final patch" })
     ].join("\n") + "\n"
   );
@@ -164,6 +202,22 @@ export async function createInitTemplate(destinationDir: string): Promise<void> 
     "export function main(): string {\n  return 'hello task bundle';\n}\n"
   );
 
+  await writeJsonFile(path.join(resolvedDir, "taskbundle.config.json"), {
+    title: "Example task bundle",
+    task: "./task.md",
+    summary: "./summary.md",
+    diff: "./result.diff",
+    events: "./events.jsonl",
+    workspace: "./workspace-files",
+    tool: "codex",
+    model: "gpt-5",
+    runtime: "node",
+    gitAuto: true,
+    out: "./bundle-output",
+    archive: "./bundle-output.tar.gz",
+    tags: ["starter"]
+  });
+
   await writeTextFile(
     path.join(resolvedDir, "README.md"),
     [
@@ -171,7 +225,8 @@ export async function createInitTemplate(destinationDir: string): Promise<void> 
       "",
       "1. Edit `task.md` and `summary.md`.",
       "2. Replace `result.diff`, `events.jsonl`, and `workspace-files/` with real task data.",
-      "3. Run `npm run dev -- pack --title \"Your task\" --task ./task.md --summary ./summary.md --diff ./result.diff --events ./events.jsonl --workspace ./workspace-files --out ./bundle-output` from the project root."
+      "3. Run `npm run dev -- pack --config ./taskbundle.config.json` from the project root.",
+      "4. Or pass explicit flags with `taskbundle pack` if you prefer command-line input."
     ].join("\n")
   );
 }
@@ -195,11 +250,50 @@ export async function inspectBundle(bundleDir: string): Promise<BundleInspection
     runtime: bundle.metadata.runtime,
     repo: bundle.metadata.repo,
     commit: bundle.metadata.commit,
+    branch: bundle.metadata.branch,
     tags: bundle.metadata.tags,
     artifacts,
     workspaceFileCount: bundle.workspaceManifest?.fileCount ?? 0,
-    eventCount: countJsonlRecords(bundle.events)
+    eventCount: bundle.parsedEvents?.length ?? countJsonlRecords(bundle.events),
+    artifactInfo: bundle.metadata.artifactInfo ?? {}
   };
+}
+
+export async function validateBundleDirectory(bundleDir: string): Promise<BundleValidationReport> {
+  const resolvedBundleDir = path.resolve(bundleDir);
+  const issues: string[] = [];
+
+  try {
+    const bundle = await readBundle(resolvedBundleDir);
+
+    if (!bundle.metadata.artifacts.task) {
+      issues.push("Missing task artifact pointer.");
+    }
+
+    if (!bundle.metadata.artifacts.summary) {
+      issues.push("Missing summary artifact pointer.");
+    }
+
+    if (!bundle.workspaceManifest && !bundle.metadata.artifacts.workspaceFilesDir) {
+      issues.push("Missing workspace snapshot or manifest.");
+    }
+
+    return {
+      bundleDir: resolvedBundleDir,
+      valid: issues.length === 0,
+      replayReady: issues.length === 0,
+      issues
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    issues.push(message);
+    return {
+      bundleDir: resolvedBundleDir,
+      valid: false,
+      replayReady: false,
+      issues
+    };
+  }
 }
 
 export function countJsonlRecords(content: string | undefined): number {
@@ -207,10 +301,18 @@ export function countJsonlRecords(content: string | undefined): number {
     return 0;
   }
 
-  return content
-    .split("\n")
-    .map((line) => line.trim())
-    .filter((line) => line.length > 0).length;
+  return parseEventsJsonl(content).length;
+}
+
+async function recordArtifactInfo(
+  metadata: BundleMetadata,
+  key: string,
+  bundleDir: string,
+  relativePath: string
+): Promise<void> {
+  const absolutePath = path.join(bundleDir, relativePath);
+  metadata.artifactInfo ??= {};
+  metadata.artifactInfo[key] = await getArtifactInfo(absolutePath, relativePath);
 }
 
 function resolveBundleArtifact(bundleDir: string, artifactPath: string): string {

@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { ArtifactInfo } from "../core/schema";
 
 export async function ensureDir(dirPath: string): Promise<void> {
   await fs.mkdir(dirPath, { recursive: true });
@@ -17,6 +18,10 @@ export async function pathExists(targetPath: string): Promise<boolean> {
 
 export async function readTextFile(filePath: string): Promise<string> {
   return fs.readFile(filePath, "utf8");
+}
+
+export async function readJsonFile<T>(filePath: string): Promise<T> {
+  return JSON.parse(await readTextFile(filePath)) as T;
 }
 
 export async function writeTextFile(filePath: string, content: string): Promise<void> {
@@ -74,4 +79,13 @@ export async function listFilesRecursively(rootDir: string): Promise<string[]> {
 export async function sha256File(filePath: string): Promise<string> {
   const content = await fs.readFile(filePath);
   return createHash("sha256").update(content).digest("hex");
+}
+
+export async function getArtifactInfo(filePath: string, relativePath: string): Promise<ArtifactInfo> {
+  const stats = await fs.stat(filePath);
+  return {
+    path: relativePath,
+    sha256: await sha256File(filePath),
+    size: stats.size
+  };
 }

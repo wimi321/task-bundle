@@ -2,15 +2,14 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-Task Bundle is a small TypeScript + Node.js CLI for packaging one AI coding task into a portable directory.
+Task Bundle is a TypeScript + Node.js CLI for packaging one AI coding task into a portable bundle directory.
 
-It is built for workflows where you want to:
+It is designed for workflows where you want to:
 - inspect what happened
 - share a task with someone else
-- rerun the task later
-- compare how different models or tools perform on the same starting point
-
-This MVP focuses on a directory-based bundle format and three commands: `init`, `pack`, and `inspect`.
+- rerun a task later
+- compare outputs across tools and models
+- grow toward replay and benchmark workflows
 
 It is intentionally not:
 - an agent framework
@@ -39,7 +38,11 @@ task-bundle/
     files/...
 ```
 
-See [docs/bundle-format.md](./docs/bundle-format.md) for the format details.
+See:
+- [docs/bundle-format.md](./docs/bundle-format.md)
+- [docs/bundle-format.zh-CN.md](./docs/bundle-format.zh-CN.md)
+- [docs/design-decisions.md](./docs/design-decisions.md)
+- [docs/replay-contract.md](./docs/replay-contract.md)
 
 ## Five-Minute Demo
 
@@ -56,35 +59,46 @@ npm run build
 npm run dev -- inspect ./examples/hello-world-bundle
 ```
 
-3. Generate starter inputs for your own task:
+3. Compare two example bundles produced by different tools:
+
+```bash
+npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bundle-claude
+```
+
+4. Validate the example bundle:
+
+```bash
+npm run dev -- validate ./examples/hello-world-bundle
+```
+
+5. Scan the whole examples directory:
+
+```bash
+npm run dev -- scan ./examples
+```
+
+6. Generate starter inputs:
 
 ```bash
 npm run dev -- init --out ./starter
 ```
 
-4. Pack those inputs into a new bundle:
+7. Pack from the generated config:
 
 ```bash
-npm run dev -- pack \
-  --title "My first bundle" \
-  --task ./starter/task.md \
-  --summary ./starter/summary.md \
-  --diff ./starter/result.diff \
-  --events ./starter/events.jsonl \
-  --workspace ./starter/workspace-files \
-  --out ./dist/my-first-bundle
+npm run dev -- pack --config ./starter/taskbundle.config.json
 ```
 
-5. Inspect the bundle you just created:
+8. Archive the result:
 
 ```bash
-npm run dev -- inspect ./dist/my-first-bundle
+npm run dev -- archive ./starter/bundle-output --out ./starter/bundle-output.tar.gz
 ```
 
 ## Commands
 
 ### `taskbundle init`
-Create starter inputs for a new bundle:
+Create starter files for a new bundle:
 
 ```bash
 npm run dev -- init --out ./starter
@@ -96,10 +110,13 @@ This writes:
 - `events.jsonl`
 - `result.diff`
 - `workspace-files/`
+- `taskbundle.config.json`
 - `README.md`
 
 ### `taskbundle pack`
-Build a bundle directory from task artifacts:
+Build a bundle directory from task artifacts.
+
+Explicit flags:
 
 ```bash
 npm run dev -- pack \
@@ -118,6 +135,17 @@ npm run dev -- pack \
   --out ./dist/fix-auth-bundle
 ```
 
+Config-driven:
+
+```bash
+npm run dev -- pack --config ./starter/taskbundle.config.json
+```
+
+`pack` also supports:
+- automatic git metadata detection
+- artifact hashes and sizes in `bundle.json`
+- optional `.tar.gz` archive creation with `--archive`
+
 ### `taskbundle inspect`
 Read a bundle directory and print a human-friendly summary:
 
@@ -125,59 +153,73 @@ Read a bundle directory and print a human-friendly summary:
 npm run dev -- inspect ./examples/hello-world-bundle
 ```
 
-Or print machine-readable JSON:
+Machine-readable JSON:
 
 ```bash
 npm run dev -- inspect --json ./examples/hello-world-bundle
 ```
 
-Expected output shape:
+### `taskbundle compare`
+Compare two bundles:
 
-```txt
-Task Bundle
------------
-Title: Fix greeting punctuation
-Schema: 0.1.0
-Created: 2026-03-18T00:00:00.000Z
-Tool: codex
-Model: gpt-5
-Runtime: node
-Repo: example/hello-world
-Commit: abc123
-Tags: demo, mvp
-
-Artifacts:
-- bundle.json
-- events.jsonl
-- result.diff
-- summary.md
-- task.md
-- workspace
-
-Workspace files: 1
-Events: 3
+```bash
+npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bundle-claude
 ```
 
-## Example Bundle
+JSON output:
 
-The repository includes a real example at [examples/hello-world-bundle](./examples/hello-world-bundle).
+```bash
+npm run dev -- compare --json ./examples/hello-world-bundle ./examples/hello-world-bundle-claude
+```
 
-You can use it to:
-- inspect a complete bundle immediately
-- understand the directory structure
-- see how task, summary, events, diff, and workspace snapshot fit together
+### `taskbundle archive`
+Create a `.tar.gz` archive from a bundle directory:
+
+```bash
+npm run dev -- archive ./examples/hello-world-bundle --out ./dist/hello-world-bundle.tar.gz
+```
+
+### `taskbundle extract`
+Extract a bundle archive into a directory:
+
+```bash
+npm run dev -- extract ./dist/hello-world-bundle.tar.gz --out ./dist/extracted
+```
+
+### `taskbundle validate`
+Validate a bundle and check replay readiness:
+
+```bash
+npm run dev -- validate ./examples/hello-world-bundle
+```
+
+### `taskbundle scan`
+Scan a directory for bundle folders:
+
+```bash
+npm run dev -- scan ./examples
+```
+
+## Example Bundles
+
+The repository includes two real examples:
+- [examples/hello-world-bundle](./examples/hello-world-bundle)
+- [examples/hello-world-bundle-claude](./examples/hello-world-bundle-claude)
+
+They represent the same task captured from different tool/model combinations so `compare` has something meaningful to show.
 
 ## Bundle Format At A Glance
 
-- `bundle.json`: top-level metadata and pointers to artifacts
+- `bundle.json`: top-level metadata and artifact pointers
+- `artifactInfo`: optional size/hash information for copied artifacts
 - `task.md`: original task, constraints, and acceptance criteria
 - `summary.md`: short human-readable execution outcome
 - `result.diff`: final patch or diff
 - `events.jsonl`: notable actions and turning points, not every token
 - `workspace/manifest.json`: file list with paths, sizes, and hashes
 - `workspace/files/`: captured task-related files
-
-Full format details live in [docs/bundle-format.md](/Users/haoc/Developer/task-bundle/docs/bundle-format.md).
+- `git`: optional git root / branch / remote / commit metadata
+- `runner`: optional pack-time runtime metadata
 
 ## Local Development
 
@@ -197,6 +239,12 @@ npm run build
 
 ```bash
 npm test
+```
+
+### Full Check
+
+```bash
+npm run check
 ```
 
 ### Run the CLI
@@ -221,28 +269,23 @@ src/
   utils/
 examples/
   hello-world-bundle/
+  hello-world-bundle-claude/
 docs/
   bundle-format.md
+  bundle-format.zh-CN.md
+  design-decisions.md
+  replay-contract.md
 ```
 
 ## Known Limitations
 
-- The MVP stores bundles as plain directories only.
-- Event logs are intentionally lightweight and not token-level recordings.
-- Workspace capture copies a provided file set directly; it does not detect repo state automatically.
-- There is no remote execution, provider integration, or viewer UI yet.
+- Archives currently use `.tar.gz`, not `.zip`.
+- The project compares bundle-level metadata and counts, not semantic code quality.
+- Workspace capture still uses explicit copied file sets instead of repository-wide snapshot strategies.
+- There is no viewer UI yet.
 
-## Why This Can Grow
+## Roadmap
 
-This structure is intentionally simple, but it leaves clear room for:
-- a session viewer
-- benchmark runners
-- alternate bundle transports like tar or zip
-- richer metadata and event schemas
-
-## Next Worthwhile Steps
-
-1. Add schema validation for bundle contents.
-2. Support packing directly from a git diff and commit metadata.
-3. Add CLI smoke tests once dependency installation is available.
-4. Add zip export and import.
+See:
+- [ROADMAP.md](./ROADMAP.md)
+- [ROADMAP.zh-CN.md](./ROADMAP.zh-CN.md)

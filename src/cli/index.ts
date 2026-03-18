@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 import { Command } from "commander";
+import { registerArchiveCommands } from "./commands/archive";
+import { registerCompareCommand } from "./commands/compare";
 import { registerInitCommand } from "./commands/init";
 import { registerInspectCommand } from "./commands/inspect";
 import { registerPackCommand } from "./commands/pack";
+import { registerScanCommand } from "./commands/scan";
+import { registerValidateCommand } from "./commands/validate";
 
 async function main(): Promise<void> {
   const program = new Command();
@@ -10,11 +14,15 @@ async function main(): Promise<void> {
   program
     .name("taskbundle")
     .description("Package AI coding work into portable task bundles.")
-    .version("0.1.0");
+    .version("0.2.0");
 
   registerInitCommand(program);
   registerPackCommand(program);
   registerInspectCommand(program);
+  registerCompareCommand(program);
+  registerArchiveCommands(program);
+  registerValidateCommand(program);
+  registerScanCommand(program);
 
   await program.parseAsync(process.argv);
 }

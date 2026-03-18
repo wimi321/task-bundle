@@ -52,14 +52,19 @@ task-bundle/
 - `runtime`
 - `repo`
 - `commit`
+- `branch`
 - `tags`
 - `artifacts`
+- `artifactInfo`
+- `git`
+- `runner`
+- `outcome`
 
 示例：
 
 ```json
 {
-  "schemaVersion": "0.1.0",
+  "schemaVersion": "0.2.0",
   "id": "hello-world-bundle",
   "title": "Fix greeting punctuation",
   "createdAt": "2026-03-18T00:00:00.000Z",
@@ -68,6 +73,7 @@ task-bundle/
   "runtime": "node",
   "repo": "example/hello-world",
   "commit": "abc123",
+  "branch": "main",
   "tags": ["demo", "mvp"],
   "artifacts": {
     "task": "task.md",
@@ -79,6 +85,8 @@ task-bundle/
   }
 }
 ```
+
+在 `0.2.x` 及之后版本里，`artifactInfo` 是推荐但非强制的字段。它可以记录 artifact 的大小和哈希，方便校验与对比。
 
 ### `task.md`
 原始任务描述，通常还会包含约束和验收标准。
@@ -123,6 +131,15 @@ task-bundle/
 ### `workspace/files/`
 任务相关文件的最小快照。MVP 版本直接把文件复制进 bundle。
 
+### `git`
+可选的 git 上下文字段，通常在 pack 时自动采集，例如 repo root、remote URL、branch、commit。
+
+### `runner`
+可选的运行器元数据，例如操作系统、Node.js 版本、CLI 版本、prompt 来源。
+
+### `outcome`
+可选的结果字段，为后续 benchmark 与 judge 流程预留。
+
 ## Replay 的含义
 
 Task Bundle 里的 replay 指的是“可重新执行、可比较”，不是 token-identical 的逐帧复刻。一个 bundle 应该能给另一个工具或模型足够上下文，让它基于相同起点再次执行同一个任务，并和别的结果做比较。
@@ -132,6 +149,7 @@ Task Bundle 里的 replay 指的是“可重新执行、可比较”，不是 to
 - `schemaVersion` 用来标识 bundle 格式版本
 - 读取方应该忽略未知字段，这样格式才能平滑演进
 - 在 MVP 里，`tool`、`model`、`runtime`、`repo`、`commit`、`diff`、`events`、`workspace` 都允许缺省
+- `artifactInfo`、`git`、`runner`、`outcome` 都是可选扩展字段
 - artifact 路径必须留在 bundle 目录内部
 
 ## 未来演进方向

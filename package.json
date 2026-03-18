@@ -1,6 +1,6 @@
 {
   "name": "task-bundle",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Portable task bundles for AI coding work.",
   "license": "MIT",
   "type": "commonjs",
@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "check": "npm run build && npm test",
     "clean": "rm -rf dist",
     "dev": "tsx src/cli/index.ts",
     "test": "node --test --import tsx",

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "0.2.0",
+  "id": "hello-world-bundle-claude",
+  "title": "Fix greeting punctuation",
+  "createdAt": "2026-03-18T00:00:00.000Z",
+  "tool": "claude-code",
+  "model": "claude-sonnet-4",
+  "runtime": "node",
+  "repo": "example/hello-world",
+  "commit": "def456",
+  "branch": "main",
+  "tags": ["demo", "compare"],
+  "artifacts": {
+    "task": "task.md",
+    "summary": "summary.md",
+    "diff": "result.diff",
+    "events": "events.jsonl",
+    "workspaceManifest": "workspace/manifest.json",
+    "workspaceFilesDir": "workspace/files"
+  }
+}

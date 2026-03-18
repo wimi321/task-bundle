@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.1.0",
+  "schemaVersion": "0.2.0",
   "id": "hello-world-bundle",
   "title": "Fix greeting punctuation",
   "createdAt": "2026-03-18T00:00:00.000Z",
@@ -8,6 +8,7 @@
   "runtime": "node",
   "repo": "example/hello-world",
   "commit": "abc123",
+  "branch": "main",
   "tags": ["demo", "mvp"],
   "artifacts": {
     "task": "task.md",
@@ -16,5 +17,32 @@
     "events": "events.jsonl",
     "workspaceManifest": "workspace/manifest.json",
     "workspaceFilesDir": "workspace/files"
+  },
+  "artifactInfo": {
+    "task": {
+      "path": "task.md",
+      "sha256": "18f5af61553b0b4e4de1a631c8984b9c260b2d8f04e709919d3e1da361c3ccf8",
+      "size": 327
+    },
+    "summary": {
+      "path": "summary.md",
+      "sha256": "5b0bf8e4d1a371fa32fe75907b38cf369f75a2358da75e7f9956a0bac47c0813",
+      "size": 218
+    },
+    "diff": {
+      "path": "result.diff",
+      "sha256": "019b7bc586b6b47ea312f3a2477c6a921ef26863b2d794686735efaa6f9d4f03",
+      "size": 216
+    },
+    "events": {
+      "path": "events.jsonl",
+      "sha256": "491345ab50af9bebb48bb336d85fe0f50e25b8a642b0bf9fc164ce446d874c67",
+      "size": 242
+    },
+    "workspaceManifest": {
+      "path": "workspace/manifest.json",
+      "sha256": "597e67b477306fa3cb74838e3273c2aba220940b5ad81530e6ea820ea5174d1a",
+      "size": 255
+    }
   }
 }

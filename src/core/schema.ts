@@ -1,4 +1,10 @@
-export const BUNDLE_SCHEMA_VERSION = "0.1.0";
+export const BUNDLE_SCHEMA_VERSION = "0.2.0";
+
+export interface ArtifactInfo {
+  path: string;
+  sha256: string;
+  size: number;
+}
 
 export interface BundleArtifacts {
   task: string;
@@ -19,8 +25,13 @@ export interface BundleMetadata {
   runtime?: string;
   repo?: string;
   commit?: string;
+  branch?: string;
   tags: string[];
   artifacts: BundleArtifacts;
+  artifactInfo?: Record<string, ArtifactInfo>;
+  git?: GitMetadata;
+  runner?: RunnerMetadata;
+  outcome?: BundleOutcome;
 }
 
 export interface WorkspaceManifestEntry {
@@ -42,6 +53,7 @@ export interface BundleContents {
   summary: string;
   diff?: string;
   events?: string;
+  parsedEvents?: BundleEvent[];
   workspaceManifest?: WorkspaceManifest;
 }
 
@@ -54,8 +66,90 @@ export interface BundleInspection {
   runtime?: string;
   repo?: string;
   commit?: string;
+  branch?: string;
   tags: string[];
   artifacts: string[];
   workspaceFileCount: number;
   eventCount: number;
+  artifactInfo: Record<string, ArtifactInfo>;
+}
+
+export interface BundleEvent {
+  type: string;
+  at: string;
+  detail: string;
+  command?: string;
+  exitCode?: number;
+  path?: string;
+}
+
+export interface GitMetadata {
+  root?: string;
+  branch?: string;
+  remote?: string;
+  commit?: string;
+}
+
+export interface RunnerMetadata {
+  os?: string;
+  nodeVersion?: string;
+  cliVersion?: string;
+  promptSource?: string;
+}
+
+export interface BundleOutcome {
+  status?: "success" | "failure" | "partial";
+  score?: number;
+  judgeNotes?: string;
+}
+
+export interface BundleComparison {
+  left: BundleInspection;
+  right: BundleInspection;
+  sameTitle: boolean;
+  sameRepo: boolean;
+  sameCommit: boolean;
+  artifactDelta: {
+    onlyInLeft: string[];
+    onlyInRight: string[];
+  };
+  counts: {
+    workspaceFilesDelta: number;
+    eventCountDelta: number;
+  };
+  modelChange: {
+    left?: string;
+    right?: string;
+  };
+  toolChange: {
+    left?: string;
+    right?: string;
+  };
+}
+
+export interface BundleValidationReport {
+  bundleDir: string;
+  valid: boolean;
+  replayReady: boolean;
+  issues: string[];
+}
+
+export interface BundlePackConfig {
+  title?: string;
+  task?: string;
+  summary?: string;
+  diff?: string;
+  events?: string;
+  workspace?: string;
+  tool?: string;
+  model?: string;
+  runtime?: string;
+  repo?: string;
+  commit?: string;
+  branch?: string;
+  tags?: string[];
+  out?: string;
+  archive?: string;
+  gitAuto?: boolean;
+  cwd?: string;
 }

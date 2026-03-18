@@ -11,6 +11,6 @@ export function registerInitCommand(program: Command): void {
       const targetDir = path.resolve(options.out);
       await createInitTemplate(targetDir);
       console.log(`Initialized starter bundle inputs at ${targetDir}`);
-      console.log("Next step: edit the files, then run `taskbundle pack`.");
+      console.log("Next step: edit the files, then run `taskbundle pack --config ./taskbundle.config.json`.");
     });
 }

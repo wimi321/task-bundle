@@ -6,15 +6,21 @@
 [![GitHub stars](https://img.shields.io/github/stars/wimi321/task-bundle?style=social)](https://github.com/wimi321/task-bundle/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
+![Task Bundle hero banner](./assets/hero-banner.svg)
+
 Turn AI coding runs into portable, replayable, benchmark-ready task bundles.
+
+The missing middle layer between raw chat logs and heavyweight benchmark platforms.
+
+Package a task once, inspect it later, compare tools on the same starting point, and generate benchmark-style reports from real artifacts.
 
 Task Bundle is a TypeScript + Node.js CLI for teams building agents, evals, coding benchmarks, and reproducible AI workflows.
 
-What makes it compelling:
-- package one coding task into a clean, shareable directory
-- compare outputs across tools and models with real metadata and artifact hashes
-- generate benchmark-style reports from a directory of bundles
-- keep enough context to rerun work later without pretending replay means token-perfect recording
+Why people star it:
+- turn one AI coding run into a clean, shareable directory instead of a screenshot, transcript, or loose patch
+- compare Codex, Claude Code, Cursor, or internal agents with real metadata, hashes, and outcome fields
+- generate benchmark-style reports from a folder of bundles without building a full evaluation platform first
+- keep replay grounded in re-execution and comparison, not token-by-token theater
 
 If you've ever wanted a format between "a raw chat log" and "a full benchmark platform", this project is that missing middle layer.
 
@@ -67,6 +73,7 @@ See:
 - [docs/bundle-format.zh-CN.md](./docs/bundle-format.zh-CN.md)
 - [docs/design-decisions.md](./docs/design-decisions.md)
 - [docs/replay-contract.md](./docs/replay-contract.md)
+- [docs/branding.md](./docs/branding.md)
 
 ## Five-Minute Demo
 

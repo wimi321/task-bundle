@@ -1,0 +1,81 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Task Bundle social preview</title>
+  <desc id="desc">Social preview artwork for Task Bundle showing replayable AI coding tasks and benchmark-ready bundle outputs.</desc>
+  <defs>
+    <linearGradient id="bg" x1="119" y1="72" x2="1168" y2="580" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10212E"/>
+      <stop offset="0.45" stop-color="#17364C"/>
+      <stop offset="1" stop-color="#244F63"/>
+    </linearGradient>
+    <linearGradient id="orb" x1="905" y1="101" x2="1203" y2="335" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD18B"/>
+      <stop offset="1" stop-color="#FF8C5A"/>
+    </linearGradient>
+    <linearGradient id="card" x1="774" y1="181" x2="1032" y2="511" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6EA"/>
+      <stop offset="1" stop-color="#F6E4D0"/>
+    </linearGradient>
+    <filter id="shadow" x="713" y="142" width="419" height="424" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="0" dy="18"/>
+      <feGaussianBlur stdDeviation="22"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.027451 0 0 0 0 0.109804 0 0 0 0 0.164706 0 0 0 0.22 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="640" rx="32" fill="url(#bg)"/>
+  <path d="M0 470C115 414 198 374 327 387C448 400 560 495 685 488C799 482 884 389 1009 360C1116 335 1187 366 1280 426V640H0V470Z" fill="#0D1B25" fill-opacity="0.42"/>
+  <circle cx="1087" cy="158" r="114" fill="url(#orb)"/>
+  <circle cx="1087" cy="158" r="154" stroke="#FFF2D8" stroke-opacity="0.16" stroke-width="2"/>
+
+  <text x="112" y="176" fill="#FFF5E8" font-size="62" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Replayable AI
+  </text>
+  <text x="112" y="242" fill="#FFF5E8" font-size="62" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Coding Tasks
+  </text>
+  <text x="112" y="296" fill="#FFD18B" font-size="24" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Portable bundles for agents, evals, and benchmark workflows
+  </text>
+  <text x="112" y="354" fill="#D8EEF0" font-size="24" font-weight="500" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Inspect. Compare. Validate. Report.
+  </text>
+
+  <g transform="translate(112 412)">
+    <rect x="0" y="0" width="134" height="46" rx="23" fill="#FFF6EA" fill-opacity="0.12" stroke="#FFF6EA" stroke-opacity="0.18"/>
+    <text x="25" y="30" fill="#FFF6EA" font-size="18" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">inspect</text>
+    <rect x="148" y="0" width="148" height="46" rx="23" fill="#7BE0D4" fill-opacity="0.16" stroke="#7BE0D4" stroke-opacity="0.28"/>
+    <text x="178" y="30" fill="#E7FFF9" font-size="18" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">compare</text>
+    <rect x="312" y="0" width="122" height="46" rx="23" fill="#FFD18B" fill-opacity="0.14" stroke="#FFD18B" stroke-opacity="0.26"/>
+    <text x="344" y="30" fill="#FFF5E8" font-size="18" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">report</text>
+  </g>
+
+  <g transform="translate(757 168)" filter="url(#shadow)">
+    <rect x="0" y="0" width="331" height="346" rx="26" fill="url(#card)"/>
+    <text x="28" y="74" fill="#17354A" font-size="28" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Task Bundle</text>
+    <text x="28" y="106" fill="#597384" font-size="18" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">replayable task directories</text>
+
+    <g transform="translate(28 138)">
+      <rect x="0" y="0" width="129" height="94" rx="16" fill="#FFFFFF" fill-opacity="0.86"/>
+      <rect x="0" y="0" width="129" height="94" rx="16" stroke="#D7C4AE"/>
+      <text x="16" y="30" fill="#1D4257" font-size="17" font-weight="800" font-family="'SF Mono',Menlo,Monaco,monospace">task.md</text>
+      <text x="16" y="54" fill="#5A7688" font-size="14" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">events.jsonl</text>
+      <text x="16" y="76" fill="#5A7688" font-size="14" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">bundle.json</text>
+
+      <rect x="146" y="0" width="157" height="94" rx="16" fill="#17364B"/>
+      <text x="162" y="30" fill="#FFF6EA" font-size="17" font-weight="800" font-family="'SF Mono',Menlo,Monaco,monospace">result.diff</text>
+      <text x="162" y="54" fill="#96F1E3" font-size="14" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">workspace/</text>
+      <text x="162" y="76" fill="#FFD79A" font-size="14" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">summary.md</text>
+    </g>
+
+    <g transform="translate(28 255)">
+      <rect x="0" y="0" width="275" height="46" rx="18" fill="#FFFFFF" fill-opacity="0.74" stroke="#D7C4AE"/>
+      <text x="16" y="29" fill="#1B3B51" font-size="17" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">codex / gpt-5</text>
+      <rect x="154" y="12" width="86" height="22" rx="11" fill="#2DB2A1"/>
+      <text x="248" y="29" fill="#1B3B51" font-size="17" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">0.93</text>
+    </g>
+  </g>
+</svg>

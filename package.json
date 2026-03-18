@@ -31,8 +31,12 @@
     "dist",
     "examples",
     "docs",
+    "assets/hero-banner.svg",
+    "assets/social-preview.svg",
     "templates",
-    "README.md"
+    "LICENSE",
+    "README.md",
+    "README.zh-CN.md"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",

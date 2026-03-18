@@ -6,15 +6,21 @@
 [![GitHub stars](https://img.shields.io/github/stars/wimi321/task-bundle?style=social)](https://github.com/wimi321/task-bundle/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
+![Task Bundle hero banner](./assets/hero-banner.svg)
+
 把 AI coding 过程，变成可分享、可重跑、可比较、可做 benchmark 的任务包。
+
+它是“原始聊天记录”和“重型 benchmark 平台”之间，那层真正好用的中间层。
+
+一次打包，之后就能 inspect、compare、validate、report，也能把不同工具放到同一起点上做更公平的对照。
 
 Task Bundle 是一个 TypeScript + Node.js CLI，适合 agent、eval、benchmark、可复现实验这类工作流。
 
-它吸引人的地方在于：
-- 能把一次 coding 任务整理成干净、稳定、可搬运的目录
-- 能在不同工具和模型之间做真实比较，不只是看聊天记录
-- 能从一组 bundle 直接生成 benchmark 风格报告
-- 能为后续 replay 保留足够上下文，但不假装逐 token 复刻才叫“可复现”
+大家愿意给它点 star，通常是因为这些点：
+- 它能把一次 AI coding 任务整理成干净、稳定、可搬运的目录，而不是散落的截图、聊天记录或 patch
+- 它能比较 Codex、Claude Code、Cursor 或内部工具的结果，而且比较依据是真实元数据、哈希和 outcome 字段
+- 它能从一组 bundle 直接生成 benchmark 风格报告，不用一开始就搭完整评测平台
+- 它对 replay 的理解更务实，强调“可重跑、可比较”，而不是追求逐 token 复刻的表演感
 
 如果你一直觉得“聊天记录太散、benchmark 平台太重”，这个项目就是中间那层缺失的基础设施。
 
@@ -67,6 +73,7 @@ task-bundle/
 - [docs/bundle-format.md](./docs/bundle-format.md)
 - [docs/design-decisions.md](./docs/design-decisions.md)
 - [docs/replay-contract.md](./docs/replay-contract.md)
+- [docs/branding.md](./docs/branding.md)
 
 ## 五分钟演示
 

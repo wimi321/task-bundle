@@ -1,0 +1,100 @@
+<svg width="1600" height="760" viewBox="0 0 1600 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Task Bundle hero banner</title>
+  <desc id="desc">A bold editorial banner for Task Bundle showing replayable AI coding tasks, bundle files, and benchmark reporting.</desc>
+  <defs>
+    <linearGradient id="bg" x1="135" y1="84" x2="1438" y2="697" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10212E"/>
+      <stop offset="0.45" stop-color="#17364C"/>
+      <stop offset="1" stop-color="#244F63"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="1085" y1="132" x2="1476" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD18B"/>
+      <stop offset="1" stop-color="#FF8C5A"/>
+    </linearGradient>
+    <linearGradient id="card" x1="993" y1="190" x2="1289" y2="599" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6EA"/>
+      <stop offset="1" stop-color="#F6E4D0"/>
+    </linearGradient>
+    <linearGradient id="chart" x1="1056" y1="429" x2="1327" y2="584" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#64E6D4"/>
+      <stop offset="1" stop-color="#2DB2A1"/>
+    </linearGradient>
+    <filter id="shadow" x="898" y="136" width="511" height="502" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="0" dy="22"/>
+      <feGaussianBlur stdDeviation="24"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.027451 0 0 0 0 0.109804 0 0 0 0 0.164706 0 0 0 0.22 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="760" rx="36" fill="url(#bg)"/>
+  <path d="M0 552C137 492 232 439 386 454C520 468 652 572 806 562C948 553 1020 430 1178 395C1327 361 1453 419 1600 500V760H0V552Z" fill="#0D1B25" fill-opacity="0.46"/>
+  <circle cx="1344" cy="182" r="146" fill="url(#sun)" fill-opacity="0.95"/>
+  <circle cx="1344" cy="182" r="196" stroke="#FFF2D8" stroke-opacity="0.18" stroke-width="2"/>
+  <circle cx="1344" cy="182" r="238" stroke="#FFF2D8" stroke-opacity="0.1" stroke-width="2"/>
+
+  <path d="M148 144H716" stroke="#7BC0B8" stroke-opacity="0.32" stroke-width="3" stroke-linecap="round"/>
+  <path d="M148 170H448" stroke="#7BC0B8" stroke-opacity="0.14" stroke-width="3" stroke-linecap="round"/>
+
+  <text x="148" y="248" fill="#FFF5E8" font-size="82" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Replayable AI
+  </text>
+  <text x="148" y="334" fill="#FFF5E8" font-size="82" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Coding Tasks
+  </text>
+  <text x="148" y="398" fill="#FFD18B" font-size="28" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Portable bundles for agents, evals, and benchmark workflows
+  </text>
+
+  <text x="148" y="470" fill="#D8EEF0" font-size="28" font-weight="500" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Package the task. Compare the run. Report the results.
+  </text>
+
+  <g transform="translate(148 520)">
+    <rect x="0" y="0" width="142" height="50" rx="25" fill="#FFF6EA" fill-opacity="0.12" stroke="#FFF6EA" stroke-opacity="0.18"/>
+    <text x="28" y="32" fill="#FFF6EA" font-size="20" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">inspect</text>
+
+    <rect x="158" y="0" width="160" height="50" rx="25" fill="#7BE0D4" fill-opacity="0.16" stroke="#7BE0D4" stroke-opacity="0.28"/>
+    <text x="192" y="32" fill="#E7FFF9" font-size="20" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">compare</text>
+
+    <rect x="336" y="0" width="130" height="50" rx="25" fill="#FFD18B" fill-opacity="0.14" stroke="#FFD18B" stroke-opacity="0.26"/>
+    <text x="371" y="32" fill="#FFF5E8" font-size="20" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">report</text>
+  </g>
+
+  <g transform="translate(976 162)" filter="url(#shadow)">
+    <rect x="0" y="0" width="415" height="408" rx="28" fill="url(#card)"/>
+    <rect x="28" y="28" width="158" height="28" rx="14" fill="#18364A"/>
+    <rect x="200" y="28" width="87" height="28" rx="14" fill="#7BE0D4" fill-opacity="0.28"/>
+    <text x="32" y="115" fill="#17354A" font-size="32" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Task Bundle</text>
+    <text x="32" y="152" fill="#597384" font-size="20" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Portable task bundle directory</text>
+
+    <g transform="translate(32 188)">
+      <rect x="0" y="0" width="165" height="118" rx="18" fill="#FFFFFF" fill-opacity="0.86"/>
+      <rect x="0" y="0" width="165" height="118" rx="18" stroke="#D7C4AE"/>
+      <text x="18" y="34" fill="#1D4257" font-size="19" font-weight="800" font-family="'SF Mono',Menlo,Monaco,monospace">task.md</text>
+      <text x="18" y="62" fill="#5A7688" font-size="16" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">summary.md</text>
+      <text x="18" y="88" fill="#5A7688" font-size="16" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">events.jsonl</text>
+
+      <rect x="184" y="0" width="167" height="118" rx="18" fill="#17364B"/>
+      <text x="202" y="34" fill="#FFF6EA" font-size="19" font-weight="800" font-family="'SF Mono',Menlo,Monaco,monospace">result.diff</text>
+      <text x="202" y="62" fill="#96F1E3" font-size="16" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">workspace/</text>
+      <text x="202" y="88" fill="#FFD79A" font-size="16" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">bundle.json</text>
+    </g>
+
+    <g transform="translate(32 330)">
+      <rect x="0" y="0" width="351" height="52" rx="20" fill="#FFFFFF" fill-opacity="0.74" stroke="#D7C4AE"/>
+      <text x="18" y="32" fill="#1B3B51" font-size="18" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">codex / gpt-5</text>
+      <rect x="196" y="14" width="118" height="24" rx="12" fill="url(#chart)"/>
+      <text x="324" y="32" fill="#1B3B51" font-size="18" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">0.93</text>
+    </g>
+  </g>
+
+  <g opacity="0.34">
+    <path d="M856 118C915 134 969 169 1017 222" stroke="#FFE9C8" stroke-width="3" stroke-linecap="round"/>
+    <path d="M846 156C900 170 953 203 997 250" stroke="#FFE9C8" stroke-width="3" stroke-linecap="round"/>
+    <path d="M834 194C887 210 938 244 980 289" stroke="#FFE9C8" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

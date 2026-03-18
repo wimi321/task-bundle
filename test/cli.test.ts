@@ -29,11 +29,16 @@ test("inspect --json prints structured bundle data", async () => {
     title: string;
     schemaVersion: string;
     eventCount: number;
+    outcome?: { status?: string; score?: number };
+    promptSource?: string;
   };
 
   assert.equal(parsed.title, "Fix greeting punctuation");
   assert.equal(parsed.schemaVersion, "0.2.0");
   assert.equal(parsed.eventCount, 3);
+  assert.equal(parsed.outcome?.status, "success");
+  assert.equal(parsed.outcome?.score, 0.93);
+  assert.equal(parsed.promptSource, "cli");
 });
 
 test("compare --json compares bundles", async () => {
@@ -47,11 +52,15 @@ test("compare --json compares bundles", async () => {
     sameTitle: boolean;
     counts: { eventCountDelta: number };
     modelChange: { right: string };
+    outcomeChange: { scoreDelta?: number };
+    artifactChanges: Array<{ artifact: string; sameHash: boolean }>;
   };
 
   assert.equal(parsed.sameTitle, true);
   assert.equal(parsed.counts.eventCountDelta, -1);
   assert.equal(parsed.modelChange.right, "claude-sonnet-4");
+  assert.ok(Math.abs((parsed.outcomeChange.scoreDelta ?? 0) - 0.04) < 1e-9);
+  assert.ok(parsed.artifactChanges.some((entry) => entry.artifact === "summary" && entry.sameHash === false));
 });
 
 test("archive and extract commands round-trip a bundle", async () => {
@@ -88,9 +97,10 @@ test("validate --json reports a replay-ready example bundle", async () => {
 
 test("scan --json finds example bundles in a directory", async () => {
   const stdout = await runCli(["scan", "--json", "./examples"]);
-  const parsed = JSON.parse(stdout) as Array<{ title: string; model?: string }>;
+  const parsed = JSON.parse(stdout) as Array<{ title: string; model?: string; outcome?: { score?: number } }>;
 
   assert.equal(parsed.length >= 2, true);
   assert.ok(parsed.some((entry) => entry.model === "gpt-5"));
   assert.ok(parsed.some((entry) => entry.model === "claude-sonnet-4"));
+  assert.ok(parsed.some((entry) => entry.model === "gpt-5" && entry.outcome?.score === 0.93));
 });

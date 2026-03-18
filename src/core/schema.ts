@@ -72,6 +72,8 @@ export interface BundleInspection {
   workspaceFileCount: number;
   eventCount: number;
   artifactInfo: Record<string, ArtifactInfo>;
+  outcome?: BundleOutcome;
+  promptSource?: string;
 }
 
 export interface BundleEvent {
@@ -113,6 +115,13 @@ export interface BundleComparison {
     onlyInLeft: string[];
     onlyInRight: string[];
   };
+  artifactChanges: Array<{
+    artifact: string;
+    left?: ArtifactInfo;
+    right?: ArtifactInfo;
+    sameHash: boolean;
+    sameSize: boolean;
+  }>;
   counts: {
     workspaceFilesDelta: number;
     eventCountDelta: number;
@@ -124,6 +133,13 @@ export interface BundleComparison {
   toolChange: {
     left?: string;
     right?: string;
+  };
+  outcomeChange: {
+    leftStatus?: BundleOutcome["status"];
+    rightStatus?: BundleOutcome["status"];
+    leftScore?: number;
+    rightScore?: number;
+    scoreDelta?: number;
   };
 }
 
@@ -152,4 +168,8 @@ export interface BundlePackConfig {
   archive?: string;
   gitAuto?: boolean;
   cwd?: string;
+  status?: BundleOutcome["status"];
+  score?: number;
+  judgeNotes?: string;
+  promptSource?: string;
 }

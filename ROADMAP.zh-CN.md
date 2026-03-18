@@ -9,14 +9,15 @@ Task Bundle 目前已经从一个小型 CLI MVP，走到了“可实际使用的
 - 已完成：bundle metadata、workspace manifest、events 的 schema 校验
 - 已完成：打包时自动采集 git 元数据
 - 已完成：`compare` 命令
+- 已完成：更丰富的 `compare` 输出，包括 artifact hash 差异和 score delta
 - 已完成：`.tar.gz` 归档与解压命令
 - 已完成：`validate` 与 `scan` 命令，用于 replay 校验和 bundle 集合扫描
 - 已完成：artifact 哈希和大小写入 `bundle.json`
+- 已完成：bundle metadata 中的 benchmark / judge 结果字段
 - 已完成：CLI smoke tests 和 GitHub Actions CI
 - 已完成：中英文文档
 
 ### v0.3
-- 规划中：更丰富的 `compare` 输出，包括文件级差异摘要
 - 规划中：面向 benchmark 的结果字段和评分约定
 - 规划中：多 bundle 目录扫描与批量比较
 - 规划中：更多用于演示和 benchmark 的标准 example bundles

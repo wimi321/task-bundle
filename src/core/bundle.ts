@@ -213,6 +213,10 @@ export async function createInitTemplate(destinationDir: string): Promise<void> 
     model: "gpt-5",
     runtime: "node",
     gitAuto: true,
+    status: "success",
+    score: 1,
+    judgeNotes: "Starter example bundle",
+    promptSource: "config",
     out: "./bundle-output",
     archive: "./bundle-output.tar.gz",
     tags: ["starter"]
@@ -255,7 +259,9 @@ export async function inspectBundle(bundleDir: string): Promise<BundleInspection
     artifacts,
     workspaceFileCount: bundle.workspaceManifest?.fileCount ?? 0,
     eventCount: bundle.parsedEvents?.length ?? countJsonlRecords(bundle.events),
-    artifactInfo: bundle.metadata.artifactInfo ?? {}
+    artifactInfo: bundle.metadata.artifactInfo ?? {},
+    outcome: bundle.metadata.outcome,
+    promptSource: bundle.metadata.runner?.promptSource
   };
 }
 

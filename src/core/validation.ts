@@ -185,6 +185,13 @@ export function validatePackConfig(value: unknown): BundlePackConfig {
     out: optionalString(config.out, "pack config.out"),
     archive: optionalString(config.archive, "pack config.archive"),
     gitAuto: typeof config.gitAuto === "boolean" ? config.gitAuto : undefined,
-    cwd: optionalString(config.cwd, "pack config.cwd")
+    cwd: optionalString(config.cwd, "pack config.cwd"),
+    status:
+      config.status === undefined
+        ? undefined
+        : (assertString(config.status, "pack config.status") as "success" | "failure" | "partial"),
+    score: typeof config.score === "number" ? config.score : undefined,
+    judgeNotes: optionalString(config.judgeNotes, "pack config.judgeNotes"),
+    promptSource: optionalString(config.promptSource, "pack config.promptSource")
   };
 }

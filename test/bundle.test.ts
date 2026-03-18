@@ -85,6 +85,9 @@ test("inspectBundle returns human and machine readable summary fields", async ()
   assert.deepEqual(inspection.tags, ["demo", "mvp"]);
   assert.ok(inspection.artifacts.includes("bundle.json"));
   assert.ok(inspection.artifactInfo.task);
+  assert.equal(inspection.outcome?.status, "success");
+  assert.equal(inspection.outcome?.score, 0.93);
+  assert.equal(inspection.promptSource, "cli");
 });
 
 test("createBundle removes stale files from a previous output directory", async () => {
@@ -155,6 +158,8 @@ test("compareBundles reports expected deltas", async () => {
   assert.deepEqual(comparison.artifactDelta.onlyInRight, []);
   assert.equal(comparison.counts.eventCountDelta, -1);
   assert.equal(comparison.modelChange.right, "claude-sonnet-4");
+  assert.ok(Math.abs((comparison.outcomeChange.scoreDelta ?? 0) - 0.04) < 1e-9);
+  assert.equal(comparison.artifactChanges.some((artifact) => artifact.artifact === "summary" && !artifact.sameHash), true);
 });
 
 test("pack config with git auto captures git metadata", async () => {
@@ -191,6 +196,9 @@ test("pack config with git auto captures git metadata", async () => {
     assert.equal(bundle.metadata.repo, "https://github.com/example/task-bundle-test.git");
     assert.equal(bundle.metadata.branch, "main");
     assert.ok(bundle.metadata.commit);
+    assert.equal(bundle.metadata.outcome?.status, "success");
+    assert.equal(bundle.metadata.outcome?.score, 1);
+    assert.equal(bundle.metadata.runner?.promptSource, "config");
   } finally {
     await rm(tempDir, { recursive: true, force: true });
   }

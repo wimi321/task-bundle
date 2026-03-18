@@ -44,5 +44,16 @@
       "sha256": "597e67b477306fa3cb74838e3273c2aba220940b5ad81530e6ea820ea5174d1a",
       "size": 255
     }
+  },
+  "runner": {
+    "os": "darwin",
+    "nodeVersion": "v25.8.0",
+    "cliVersion": "0.3.0",
+    "promptSource": "cli"
+  },
+  "outcome": {
+    "status": "success",
+    "score": 0.93,
+    "judgeNotes": "Small patch, correct output, complete workspace capture."
   }
 }

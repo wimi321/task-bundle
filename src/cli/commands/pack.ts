@@ -26,6 +26,10 @@ interface PackCliOptions {
   archive?: string;
   cwd?: string;
   gitAuto?: boolean;
+  status?: "success" | "failure" | "partial";
+  score?: string;
+  judgeNotes?: string;
+  promptSource?: string;
 }
 
 export function registerPackCommand(program: Command): void {
@@ -48,6 +52,10 @@ export function registerPackCommand(program: Command): void {
     .option("--branch <name>", "Git branch name")
     .option("--archive <file>", "Write a .tar.gz archive after packing")
     .option("--cwd <dir>", "Base working directory for config resolution and git detection")
+    .option("--status <status>", "Outcome status: success, failure, or partial")
+    .option("--score <number>", "Numeric benchmark or judge score")
+    .option("--judge-notes <text>", "Short benchmark or judge notes")
+    .option("--prompt-source <source>", "Prompt source label, such as cli or config")
     .option("--tag <tag>", "Tag to add to bundle metadata", collectTags, [])
     .option("--no-git-auto", "Disable automatic git metadata detection")
     .action(async (options: PackCliOptions, command: Command) => {
@@ -87,8 +95,8 @@ export function registerPackCommand(program: Command): void {
       const runner: RunnerMetadata = {
         os: process.platform,
         nodeVersion: process.version,
-        cliVersion: "0.2.0",
-        promptSource: options.config ? "config" : "cli"
+        cliVersion: "0.3.0",
+        promptSource: merged.promptSource ?? (options.config ? "config" : "cli")
       };
 
       const metadata = await createBundle({
@@ -107,7 +115,15 @@ export function registerPackCommand(program: Command): void {
         branch: merged.branch ?? gitMetadata?.branch,
         tags: merged.tags ?? [],
         git: gitMetadata,
-        runner
+        runner,
+        outcome:
+          merged.status || merged.score !== undefined || merged.judgeNotes
+            ? {
+                status: merged.status,
+                score: merged.score,
+                judgeNotes: merged.judgeNotes
+              }
+            : undefined
       });
 
       console.log(`Created bundle at ${outputDir}`);
@@ -153,6 +169,10 @@ function mergePackOptions(
       out: cli.out,
       archive: cli.archive,
       cwd: cli.cwd,
+      status: cli.status,
+      score: parseNumericOption(cli.score, "score"),
+      judgeNotes: cli.judgeNotes,
+      promptSource: cli.promptSource,
       tags: cliTags,
       gitAuto
     })
@@ -175,4 +195,17 @@ function stripUndefined<T extends Record<string, unknown>>(value: T): Partial<T>
   return Object.fromEntries(
     Object.entries(value).filter(([, entry]) => entry !== undefined)
   ) as Partial<T>;
+}
+
+function parseNumericOption(value: string | undefined, label: string): number | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) {
+    throw new Error(`${label} must be a valid number.`);
+  }
+
+  return parsed;
 }

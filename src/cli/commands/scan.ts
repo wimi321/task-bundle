@@ -26,6 +26,7 @@ export function registerScanCommand(program: Command): void {
         console.log(inspection.title);
         console.log(`- schema: ${inspection.schemaVersion}`);
         console.log(`- tool/model: ${inspection.tool ?? "unknown"} / ${inspection.model ?? "unknown"}`);
+        console.log(`- status/score: ${inspection.outcome?.status ?? "unknown"} / ${inspection.outcome?.score ?? "n/a"}`);
         console.log(`- workspace files: ${inspection.workspaceFileCount}`);
         console.log(`- events: ${inspection.eventCount}`);
       }

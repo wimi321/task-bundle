@@ -144,6 +144,7 @@ npm run dev -- pack --config ./starter/taskbundle.config.json
 `pack` 现在还支持：
 - 自动采集 git 元数据
 - 在 `bundle.json` 中记录 artifact 哈希和大小
+- 写入 benchmark / judge 结果字段，例如 `status`、`score`、`judgeNotes`
 - 用 `--archive` 直接生成 `.tar.gz`
 
 ### `taskbundle inspect`
@@ -220,6 +221,7 @@ npm run dev -- scan ./examples
 - `workspace/files/`：捕获到的任务相关文件
 - `git`：可选的 git root / branch / remote / commit 信息
 - `runner`：可选的打包运行时信息
+- `outcome`：可选的 benchmark / judge 结果字段
 
 ## 本地开发
 
@@ -280,7 +282,7 @@ docs/
 ## 当前限制
 
 - 归档格式目前是 `.tar.gz`，不是 `.zip`
-- compare 目前主要比较 bundle 元数据和统计信息，不做语义级代码评判
+- compare 现在可以比较 metadata、score 和 artifact hash，但它仍然不会自动做语义级代码评判
 - workspace 捕获仍然基于显式文件集合，而不是整仓库镜像策略
 - 还没有 viewer UI
 

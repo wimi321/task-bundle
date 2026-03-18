@@ -14,7 +14,7 @@ async function main(): Promise<void> {
   program
     .name("taskbundle")
     .description("Package AI coding work into portable task bundles.")
-    .version("0.2.0");
+    .version("0.3.0");
 
   registerInitCommand(program);
   registerPackCommand(program);

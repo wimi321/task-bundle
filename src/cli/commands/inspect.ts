@@ -29,6 +29,9 @@ export function registerInspectCommand(program: Command): void {
       printKeyValue("Repo", inspection.repo);
       printKeyValue("Commit", inspection.commit);
       printKeyValue("Branch", inspection.branch);
+      printKeyValue("Status", inspection.outcome?.status);
+      printKeyValue("Score", inspection.outcome?.score?.toString());
+      printKeyValue("Prompt source", inspection.promptSource);
       printKeyValue("Tags", inspection.tags.join(", "));
       console.log("");
       printList("Artifacts", inspection.artifacts);

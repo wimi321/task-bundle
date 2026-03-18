@@ -144,6 +144,7 @@ npm run dev -- pack --config ./starter/taskbundle.config.json
 `pack` also supports:
 - automatic git metadata detection
 - artifact hashes and sizes in `bundle.json`
+- benchmark-style outcome fields such as `status`, `score`, and `judgeNotes`
 - optional `.tar.gz` archive creation with `--archive`
 
 ### `taskbundle inspect`
@@ -220,6 +221,7 @@ They represent the same task captured from different tool/model combinations so 
 - `workspace/files/`: captured task-related files
 - `git`: optional git root / branch / remote / commit metadata
 - `runner`: optional pack-time runtime metadata
+- `outcome`: optional benchmark or judge result fields
 
 ## Local Development
 
@@ -280,7 +282,7 @@ docs/
 ## Known Limitations
 
 - Archives currently use `.tar.gz`, not `.zip`.
-- The project compares bundle-level metadata and counts, not semantic code quality.
+- The project can compare metadata, scores, and artifact hashes, but it still does not judge semantic code quality on its own.
 - Workspace capture still uses explicit copied file sets instead of repository-wide snapshot strategies.
 - There is no viewer UI yet.
 

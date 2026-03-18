@@ -17,5 +17,43 @@
     "events": "events.jsonl",
     "workspaceManifest": "workspace/manifest.json",
     "workspaceFilesDir": "workspace/files"
+  },
+  "artifactInfo": {
+    "task": {
+      "path": "task.md",
+      "sha256": "18f5af61553b0b4e4de1a631c8984b9c260b2d8f04e709919d3e1da361c3ccf8",
+      "size": 327
+    },
+    "summary": {
+      "path": "summary.md",
+      "sha256": "9197bf9acdc1ae2c0b816c768ff8d965beaa0dbbc5c0a912af1d566dac77c53a",
+      "size": 243
+    },
+    "diff": {
+      "path": "result.diff",
+      "sha256": "019b7bc586b6b47ea312f3a2477c6a921ef26863b2d794686735efaa6f9d4f03",
+      "size": 216
+    },
+    "events": {
+      "path": "events.jsonl",
+      "sha256": "99552c51ac717180ccf82cba204b145feac016aedd34357ece403e29862ff91c",
+      "size": 414
+    },
+    "workspaceManifest": {
+      "path": "workspace/manifest.json",
+      "sha256": "597e67b477306fa3cb74838e3273c2aba220940b5ad81530e6ea820ea5174d1a",
+      "size": 255
+    }
+  },
+  "runner": {
+    "os": "darwin",
+    "nodeVersion": "v25.8.0",
+    "cliVersion": "0.3.0",
+    "promptSource": "cli"
+  },
+  "outcome": {
+    "status": "success",
+    "score": 0.89,
+    "judgeNotes": "Correct fix, slightly more event noise, still replay-ready."
   }
 }

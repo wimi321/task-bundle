@@ -1,19 +1,17 @@
 # Branding Assets
 
-Task Bundle includes repository-ready visual assets under `assets/`.
-
-The art direction is intentionally warm-editorial rather than generic SaaS gradients: a calm dark field, paper-toned bundle cards, and a benchmark signal accent that reinforces "portable tasks" plus "measurable outcomes."
+This repository includes the visual assets used in the README and GitHub social preview.
 
 ## Files
 
 - `assets/hero-banner.svg`
-  Embedded at the top of the README to make the repository landing page feel like a product, not just a package listing.
+  Hero image used at the top of the README.
 - `assets/workflow-overview.svg`
-  A second README visual that explains the capture -> inspect -> compare -> report loop in one glance.
+  Workflow diagram used in the README.
 - `assets/social-preview.svg`
   Source artwork for GitHub social preview uploads.
 - `assets/social-preview.png`
-  Recommended raster export for GitHub social preview uploads. Kept in the repository for easy manual upload, but not required in the npm package.
+  Recommended raster export for GitHub social preview uploads.
 
 ## Suggested GitHub Setup
 
@@ -23,4 +21,4 @@ The art direction is intentionally warm-editorial rather than generic SaaS gradi
 
 ## Local Export Tips
 
-If you want to regenerate the PNG on macOS, you can use Quick Look or another SVG-to-PNG tool. The repository artwork is intentionally kept as SVG so it stays editable and versionable, while the committed PNG keeps GitHub social preview setup friction low.
+The SVG files stay in the repository so they remain editable and easy to version.

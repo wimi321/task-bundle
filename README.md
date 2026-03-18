@@ -6,42 +6,37 @@
   <img src="./assets/hero-banner.svg" alt="Task Bundle hero banner" width="100%" />
 </p>
 
-<p align="center"><strong>Turn AI coding runs into portable, replayable, benchmark-ready task bundles.</strong></p>
-<p align="center">A practical format between raw chat logs and heavyweight benchmark platforms.</p>
+<p align="center"><strong>Turn AI coding runs into portable, replayable task bundles.</strong></p>
+<p align="center">Useful when chat logs are too loose and full benchmark platforms are too heavy.</p>
 <p align="center">
   <a href="#quickstart"><strong>Quick Start</strong></a> ·
-  <a href="#real-bundles"><strong>Real Output</strong></a> ·
-  <a href="#format-vs-alternatives"><strong>Why This Format</strong></a> ·
+  <a href="#example-output"><strong>Example Output</strong></a> ·
+  <a href="#where-it-fits"><strong>Where It Fits</strong></a> ·
   <a href="./docs/bundle-format.md"><strong>Bundle Format</strong></a> ·
   <a href="./docs/sample-benchmark-report.md"><strong>Sample Report</strong></a> ·
-  <a href="./ROADMAP.md"><strong>Roadmap</strong></a> ·
-  <a href="./docs/branding.md"><strong>Brand Assets</strong></a>
+  <a href="./ROADMAP.md"><strong>Roadmap</strong></a>
 </p>
 
 [![CI](https://github.com/wimi321/task-bundle/actions/workflows/ci.yml/badge.svg)](https://github.com/wimi321/task-bundle/actions/workflows/ci.yml)
 [![GitHub stars](https://img.shields.io/github/stars/wimi321/task-bundle?style=social)](https://github.com/wimi321/task-bundle/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-Task Bundle is a TypeScript + Node.js CLI for teams building agents, evals, coding benchmarks, and reproducible AI workflows.
+Task Bundle is a TypeScript + Node.js CLI for packaging one coding task into a directory you can inspect, compare, archive, validate, and report on.
 
-Package a task once, inspect it later, compare tools on the same starting point, and generate benchmark-style reports from real artifacts.
+Use it to:
+- keep task inputs, summaries, diffs, events, and workspace files together
+- compare Codex, Claude Code, Cursor, or internal tools using metadata, hashes, and outcome fields
+- generate benchmark-style reports from a folder of bundles
+- preserve enough context for reruns without aiming for token-perfect replay
 
-It helps you:
-- turn one AI coding run into a clean, shareable directory instead of leaving it scattered across screenshots, transcripts, or loose patches
-- compare Codex, Claude Code, Cursor, or internal agents using metadata, hashes, and outcome fields
-- generate benchmark-style reports from a folder of bundles without standing up a full evaluation platform first
-- preserve enough context for reruns and comparisons without requiring token-perfect recording
-
-It fits the gap between raw logs and full evaluation systems: light enough for day-to-day work, structured enough for replay and benchmarking.
-
-It is designed for workflows where you want to:
+It works best when you want to:
 - inspect what happened
 - share a task with someone else
 - rerun a task later
 - compare outputs across tools and models
 - grow toward replay and benchmark workflows
 
-It is intentionally not:
+It is not:
 - an agent framework
 - a chat UI
 - a provider router
@@ -60,13 +55,13 @@ npm run build
 npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bundle-claude
 ```
 
-If you want the shortest possible proof that the project already works, this is it.
+This is the fastest way to see the format in action.
 
 ![Task Bundle workflow overview](./assets/workflow-overview.svg)
 
-<a id="real-bundles"></a>
+<a id="example-output"></a>
 
-## See It On Real Bundles
+## Example Output
 
 Inspect a bundle:
 
@@ -110,13 +105,13 @@ Ranking
 2. Fix greeting punctuation | claude-code / claude-sonnet-4 | success | score 0.89
 ```
 
-Browse the committed example report:
+See the committed sample report:
 - [docs/sample-benchmark-report.md](./docs/sample-benchmark-report.md)
 - [docs/sample-benchmark-report.zh-CN.md](./docs/sample-benchmark-report.zh-CN.md)
 
-<a id="format-vs-alternatives"></a>
+<a id="where-it-fits"></a>
 
-## How It Compares To Common Alternatives
+## Where It Fits
 
 | Need | Chat logs | Zip or tarball | Full benchmark platform | Task Bundle |
 | --- | --- | --- | --- | --- |
@@ -161,7 +156,6 @@ See:
 - [docs/bundle-format.zh-CN.md](./docs/bundle-format.zh-CN.md)
 - [docs/design-decisions.md](./docs/design-decisions.md)
 - [docs/replay-contract.md](./docs/replay-contract.md)
-- [docs/branding.md](./docs/branding.md)
 
 ## Five-Minute Demo
 

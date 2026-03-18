@@ -1,6 +1,6 @@
 # Sample Benchmark Report
 
-This page shows what `taskbundle report` looks like against the example bundles included in this repository.
+This page keeps a saved example of `taskbundle report` generated from the example bundles in this repository.
 
 ## Regenerate Locally
 
@@ -28,8 +28,8 @@ npm run dev -- report ./examples --out ./dist/benchmark-report.md
 | codex | gpt-5 | 1 | 1 | 1 | 0.93 | 0.93 |
 | claude-code | claude-sonnet-4 | 1 | 1 | 1 | 0.89 | 0.89 |
 
-## Why This Matters
+## Why Keep This Page
 
-- It gives the repo a benchmark-shaped artifact without forcing a full benchmark platform.
-- It shows that the example bundles are not toy files with no downstream use.
-- It makes cross-tool comparisons legible for humans before you build dashboards.
+- It gives readers a concrete example of the report output.
+- It shows how the example bundles can be compared without extra tooling.
+- It provides a stable link that can be referenced from the README.

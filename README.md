@@ -2,7 +2,21 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-Task Bundle is a TypeScript + Node.js CLI for packaging one AI coding task into a portable bundle directory.
+[![CI](https://github.com/wimi321/task-bundle/actions/workflows/ci.yml/badge.svg)](https://github.com/wimi321/task-bundle/actions/workflows/ci.yml)
+[![GitHub stars](https://img.shields.io/github/stars/wimi321/task-bundle?style=social)](https://github.com/wimi321/task-bundle/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
+Turn AI coding runs into portable, replayable, benchmark-ready task bundles.
+
+Task Bundle is a TypeScript + Node.js CLI for teams building agents, evals, coding benchmarks, and reproducible AI workflows.
+
+What makes it compelling:
+- package one coding task into a clean, shareable directory
+- compare outputs across tools and models with real metadata and artifact hashes
+- generate benchmark-style reports from a directory of bundles
+- keep enough context to rerun work later without pretending replay means token-perfect recording
+
+If you've ever wanted a format between "a raw chat log" and "a full benchmark platform", this project is that missing middle layer.
 
 It is designed for workflows where you want to:
 - inspect what happened
@@ -17,6 +31,16 @@ It is intentionally not:
 - a provider router
 - a benchmark platform
 - a token-by-token recorder
+
+## Why It Matters
+
+Most AI coding work disappears into screenshots, transcripts, or one-off patches.
+
+Task Bundle gives you a durable unit you can inspect, archive, compare, validate, and report on. That makes it useful for:
+- agent builders who want reproducible tasks
+- eval and benchmark authors who need structured task artifacts
+- teams comparing Codex, Claude Code, Cursor, or custom tools
+- researchers who care about re-execution instead of token-by-token theater
 
 ## What Replay Means Here
 

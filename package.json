@@ -1,9 +1,29 @@
 {
   "name": "task-bundle",
   "version": "0.3.0",
-  "description": "Portable task bundles for AI coding work.",
+  "description": "Turn AI coding runs into portable, replayable, benchmark-ready task bundles.",
   "license": "MIT",
   "type": "commonjs",
+  "homepage": "https://github.com/wimi321/task-bundle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wimi321/task-bundle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wimi321/task-bundle/issues"
+  },
+  "keywords": [
+    "ai",
+    "llm",
+    "benchmark",
+    "evaluation",
+    "replay",
+    "cli",
+    "typescript",
+    "agent",
+    "codex",
+    "reproducibility"
+  ],
   "bin": {
     "taskbundle": "dist/cli/index.js"
   },

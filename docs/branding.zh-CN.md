@@ -11,7 +11,7 @@
 - `assets/terminal-showcase.svg`
   README 中使用的终端展示图，用来展示 inspect、compare、report 的真实输出。
 - `assets/social-preview.svg`
-  GitHub 社交预览图的可编辑源文件。
+  GitHub 社交预览图的可编辑源文件，里面会展示 compare 输出和 leaderboard 快照。
 - `assets/social-preview.png`
   GitHub 社交预览图的 PNG 版本。
 

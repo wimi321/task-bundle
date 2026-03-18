@@ -11,7 +11,7 @@ This repository includes the visual assets used in the README and GitHub social 
 - `assets/terminal-showcase.svg`
   Three-panel terminal preview used to show real inspect, compare, and report output.
 - `assets/social-preview.svg`
-  Source artwork for GitHub social preview uploads.
+  Source artwork for GitHub social preview uploads, showing compare output and a leaderboard snapshot.
 - `assets/social-preview.png`
   Recommended raster export for GitHub social preview uploads.
 

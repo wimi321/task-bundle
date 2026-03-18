@@ -1,24 +1,28 @@
 <svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Task Bundle social preview</title>
-  <desc id="desc">Social preview artwork for Task Bundle showing replayable AI coding tasks and benchmark-ready bundle outputs.</desc>
+  <desc id="desc">A share card for Task Bundle showing portable AI coding task bundles, comparison output, and a benchmark leaderboard snapshot.</desc>
   <defs>
-    <linearGradient id="bg" x1="119" y1="72" x2="1168" y2="580" gradientUnits="userSpaceOnUse">
+    <linearGradient id="bg" x1="106" y1="68" x2="1190" y2="592" gradientUnits="userSpaceOnUse">
       <stop stop-color="#10212E"/>
-      <stop offset="0.45" stop-color="#17364C"/>
+      <stop offset="0.5" stop-color="#17364C"/>
       <stop offset="1" stop-color="#244F63"/>
     </linearGradient>
-    <linearGradient id="orb" x1="905" y1="101" x2="1203" y2="335" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glow" x1="835" y1="85" x2="1204" y2="322" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FFD18B"/>
       <stop offset="1" stop-color="#FF8C5A"/>
     </linearGradient>
-    <linearGradient id="card" x1="774" y1="181" x2="1032" y2="511" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFF6EA"/>
-      <stop offset="1" stop-color="#F6E4D0"/>
+    <linearGradient id="chrome" x1="714" y1="144" x2="1111" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#223F54"/>
+      <stop offset="1" stop-color="#173346"/>
     </linearGradient>
-    <filter id="shadow" x="713" y="142" width="419" height="424" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <linearGradient id="card" x1="875" y1="343" x2="1116" y2="517" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6EA"/>
+      <stop offset="1" stop-color="#F2E1CD"/>
+    </linearGradient>
+    <filter id="shadow" x="646" y="109" width="559" height="451" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dx="0" dy="18"/>
+      <feOffset dy="18"/>
       <feGaussianBlur stdDeviation="22"/>
       <feColorMatrix type="matrix" values="0 0 0 0 0.027451 0 0 0 0 0.109804 0 0 0 0 0.164706 0 0 0 0.22 0"/>
       <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
@@ -27,55 +31,76 @@
   </defs>
 
   <rect width="1280" height="640" rx="32" fill="url(#bg)"/>
-  <path d="M0 470C115 414 198 374 327 387C448 400 560 495 685 488C799 482 884 389 1009 360C1116 335 1187 366 1280 426V640H0V470Z" fill="#0D1B25" fill-opacity="0.42"/>
-  <circle cx="1087" cy="158" r="114" fill="url(#orb)"/>
-  <circle cx="1087" cy="158" r="154" stroke="#FFF2D8" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M0 476C115 420 198 381 327 394C448 407 560 502 685 495C806 489 885 403 1009 373C1118 347 1190 379 1280 437V640H0V476Z" fill="#0D1B25" fill-opacity="0.42"/>
+  <circle cx="1098" cy="142" r="124" fill="url(#glow)" fill-opacity="0.94"/>
+  <circle cx="1098" cy="142" r="170" stroke="#FFF2D8" stroke-opacity="0.15" stroke-width="2"/>
 
-  <text x="112" y="176" fill="#FFF5E8" font-size="62" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
-    Replayable AI
+  <path d="M102 110H545" stroke="#7BE0D4" stroke-opacity="0.3" stroke-width="3" stroke-linecap="round"/>
+  <path d="M102 136H364" stroke="#7BE0D4" stroke-opacity="0.16" stroke-width="3" stroke-linecap="round"/>
+
+  <text x="104" y="206" fill="#FFF5E8" font-size="68" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Task Bundle
   </text>
-  <text x="112" y="242" fill="#FFF5E8" font-size="62" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
-    Coding Tasks
+  <text x="104" y="262" fill="#FFD18B" font-size="28" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Portable task bundles for AI coding runs
   </text>
-  <text x="112" y="296" fill="#FFD18B" font-size="24" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
-    Portable bundles for agents, evals, and benchmark workflows
+  <text x="104" y="316" fill="#D8EEF0" font-size="24" font-weight="500" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Inspect. Compare. Report.
   </text>
-  <text x="112" y="354" fill="#D8EEF0" font-size="24" font-weight="500" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
-    Inspect. Compare. Validate. Report.
+  <text x="104" y="360" fill="#C8E3E7" font-size="22" font-weight="500" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Useful when chat logs are too loose
+  </text>
+  <text x="104" y="392" fill="#C8E3E7" font-size="22" font-weight="500" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    and full evaluation stacks are too heavy.
   </text>
 
-  <g transform="translate(112 412)">
-    <rect x="0" y="0" width="134" height="46" rx="23" fill="#FFF6EA" fill-opacity="0.12" stroke="#FFF6EA" stroke-opacity="0.18"/>
-    <text x="25" y="30" fill="#FFF6EA" font-size="18" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">inspect</text>
-    <rect x="148" y="0" width="148" height="46" rx="23" fill="#7BE0D4" fill-opacity="0.16" stroke="#7BE0D4" stroke-opacity="0.28"/>
-    <text x="178" y="30" fill="#E7FFF9" font-size="18" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">compare</text>
-    <rect x="312" y="0" width="122" height="46" rx="23" fill="#FFD18B" fill-opacity="0.14" stroke="#FFD18B" stroke-opacity="0.26"/>
-    <text x="344" y="30" fill="#FFF5E8" font-size="18" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">report</text>
+  <g transform="translate(104 410)">
+    <rect x="0" y="0" width="128" height="42" rx="21" fill="#FFF6EA" fill-opacity="0.12" stroke="#FFF6EA" stroke-opacity="0.18"/>
+    <text x="24" y="27" fill="#FFF6EA" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">inspect</text>
+    <rect x="140" y="0" width="140" height="42" rx="21" fill="#7BE0D4" fill-opacity="0.16" stroke="#7BE0D4" stroke-opacity="0.28"/>
+    <text x="168" y="27" fill="#E7FFF9" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">compare</text>
+    <rect x="294" y="0" width="116" height="42" rx="21" fill="#FFD18B" fill-opacity="0.14" stroke="#FFD18B" stroke-opacity="0.26"/>
+    <text x="323" y="27" fill="#FFF5E8" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">report</text>
   </g>
 
-  <g transform="translate(757 168)" filter="url(#shadow)">
-    <rect x="0" y="0" width="331" height="346" rx="26" fill="url(#card)"/>
-    <text x="28" y="74" fill="#17354A" font-size="28" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Task Bundle</text>
-    <text x="28" y="106" fill="#597384" font-size="18" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">replayable task directories</text>
+  <g filter="url(#shadow)">
+    <g transform="translate(692 126)">
+      <rect x="0" y="0" width="469" height="316" rx="24" fill="#0A1620"/>
+      <rect x="0" y="0" width="469" height="58" rx="24" fill="url(#chrome)"/>
+      <path d="M0 34C0 20.7452 10.7452 10 24 10H445C458.255 10 469 20.7452 469 34V58H0V34Z" fill="#1A3447"/>
+      <circle cx="28" cy="29" r="6.5" fill="#FF8E72"/>
+      <circle cx="50" cy="29" r="6.5" fill="#FFD18B"/>
+      <circle cx="72" cy="29" r="6.5" fill="#7BE0D4"/>
+      <text x="132" y="35" fill="#E7F4F7" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">compare output</text>
 
-    <g transform="translate(28 138)">
-      <rect x="0" y="0" width="129" height="94" rx="16" fill="#FFFFFF" fill-opacity="0.86"/>
-      <rect x="0" y="0" width="129" height="94" rx="16" stroke="#D7C4AE"/>
-      <text x="16" y="30" fill="#1D4257" font-size="17" font-weight="800" font-family="'SF Mono',Menlo,Monaco,monospace">task.md</text>
-      <text x="16" y="54" fill="#5A7688" font-size="14" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">events.jsonl</text>
-      <text x="16" y="76" fill="#5A7688" font-size="14" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">bundle.json</text>
-
-      <rect x="146" y="0" width="157" height="94" rx="16" fill="#17364B"/>
-      <text x="162" y="30" fill="#FFF6EA" font-size="17" font-weight="800" font-family="'SF Mono',Menlo,Monaco,monospace">result.diff</text>
-      <text x="162" y="54" fill="#96F1E3" font-size="14" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">workspace/</text>
-      <text x="162" y="76" fill="#FFD79A" font-size="14" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">summary.md</text>
+      <g font-family="'SF Mono',Menlo,Monaco,monospace" font-size="15" font-weight="600">
+        <text x="24" y="96" fill="#7BE0D4">$ taskbundle compare bundle-a bundle-b</text>
+        <text x="24" y="132" fill="#FFF5E8">Task Bundle Comparison</text>
+        <text x="24" y="156" fill="#6B8A99">----------------------</text>
+        <text x="24" y="190" fill="#CDE8EA">Left tool: <tspan fill="#7BE0D4">codex</tspan></text>
+        <text x="24" y="214" fill="#CDE8EA">Right tool: <tspan fill="#FFD39B">claude-code</tspan></text>
+        <text x="24" y="238" fill="#CDE8EA">Left score: <tspan fill="#FFF5E8">0.93</tspan></text>
+        <text x="24" y="262" fill="#CDE8EA">Right score: <tspan fill="#FFF5E8">0.89</tspan></text>
+        <text x="24" y="286" fill="#CDE8EA">Score delta: <tspan fill="#A9F1E5">0.04</tspan></text>
+        <text x="24" y="310" fill="#CDE8EA">Workspace file delta: <tspan fill="#FFF5E8">0</tspan></text>
+      </g>
     </g>
 
-    <g transform="translate(28 255)">
-      <rect x="0" y="0" width="275" height="46" rx="18" fill="#FFFFFF" fill-opacity="0.74" stroke="#D7C4AE"/>
-      <text x="16" y="29" fill="#1B3B51" font-size="17" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">codex / gpt-5</text>
-      <rect x="154" y="12" width="86" height="22" rx="11" fill="#2DB2A1"/>
-      <text x="248" y="29" fill="#1B3B51" font-size="17" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">0.93</text>
+    <g transform="translate(846 340)">
+      <rect x="0" y="0" width="250" height="164" rx="22" fill="url(#card)"/>
+      <rect x="18" y="18" width="96" height="24" rx="12" fill="#17364B"/>
+      <text x="24" y="73" fill="#17354A" font-size="20" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Leaderboard</text>
+      <text x="24" y="102" fill="#597384" font-size="15" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">2 runs, avg score 0.91</text>
+
+      <rect x="24" y="120" width="148" height="14" rx="7" fill="#1F4258"/>
+      <rect x="24" y="120" width="138" height="14" rx="7" fill="#2DB2A1"/>
+      <text x="182" y="132" fill="#17354A" font-size="15" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">0.93</text>
+      <text x="24" y="114" fill="#1F4258" font-size="14" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">codex / gpt-5</text>
+
+      <rect x="24" y="146" width="148" height="14" rx="7" fill="#D8C7B4"/>
+      <rect x="24" y="146" width="132" height="14" rx="7" fill="#F0B57A"/>
+      <text x="182" y="158" fill="#17354A" font-size="15" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">0.89</text>
+      <text x="24" y="140" fill="#6B7E89" font-size="14" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">claude-code</text>
     </g>
   </g>
 </svg>

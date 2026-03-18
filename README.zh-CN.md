@@ -77,19 +77,25 @@ npm run dev -- validate ./examples/hello-world-bundle
 npm run dev -- scan ./examples
 ```
 
-6. 生成 starter 输入目录：
+6. 生成 benchmark 风格报告：
+
+```bash
+npm run dev -- report ./examples --out ./dist/benchmark-report.md
+```
+
+7. 生成 starter 输入目录：
 
 ```bash
 npm run dev -- init --out ./starter
 ```
 
-7. 直接从配置文件打包：
+8. 直接从配置文件打包：
 
 ```bash
 npm run dev -- pack --config ./starter/taskbundle.config.json
 ```
 
-8. 把 bundle 归档成 `.tar.gz`：
+9. 把 bundle 归档成 `.tar.gz`：
 
 ```bash
 npm run dev -- archive ./starter/bundle-output --out ./starter/bundle-output.tar.gz
@@ -201,6 +207,13 @@ npm run dev -- validate ./examples/hello-world-bundle
 npm run dev -- scan ./examples
 ```
 
+### `taskbundle report`
+生成 benchmark 风格的排行榜和可选 Markdown 报告：
+
+```bash
+npm run dev -- report ./examples --out ./dist/benchmark-report.md
+```
+
 ## 示例 Bundle
 
 仓库里现在有两个示例：
@@ -208,6 +221,8 @@ npm run dev -- scan ./examples
 - [examples/hello-world-bundle-claude](./examples/hello-world-bundle-claude)
 
 它们表达的是同一个任务，但来自不同的工具 / 模型组合，所以 `compare` 命令有真实可看的结果。
+
+你也可以直接把这个目录交给 `taskbundle report`，生成一份小型 benchmark 排行榜。
 
 ## Bundle 格式一眼看懂
 

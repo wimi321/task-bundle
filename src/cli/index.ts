@@ -5,6 +5,7 @@ import { registerCompareCommand } from "./commands/compare";
 import { registerInitCommand } from "./commands/init";
 import { registerInspectCommand } from "./commands/inspect";
 import { registerPackCommand } from "./commands/pack";
+import { registerReportCommand } from "./commands/report";
 import { registerScanCommand } from "./commands/scan";
 import { registerValidateCommand } from "./commands/validate";
 
@@ -23,6 +24,7 @@ async function main(): Promise<void> {
   registerArchiveCommands(program);
   registerValidateCommand(program);
   registerScanCommand(program);
+  registerReportCommand(program);
 
   await program.parseAsync(process.argv);
 }

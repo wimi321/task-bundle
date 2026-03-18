@@ -7,6 +7,7 @@ import path from "node:path";
 import { promisify } from "node:util";
 import { createBundle, createInitTemplate, inspectBundle, readBundle } from "../src/core/bundle";
 import { compareBundles } from "../src/core/compare";
+import { generateBenchmarkReport, renderBenchmarkReportMarkdown } from "../src/core/report";
 import { pathExists } from "../src/utils/fs";
 
 const execFileAsync = promisify(execFile);
@@ -202,4 +203,18 @@ test("pack config with git auto captures git metadata", async () => {
   } finally {
     await rm(tempDir, { recursive: true, force: true });
   }
+});
+
+test("generateBenchmarkReport ranks bundles and produces markdown", async () => {
+  const report = await generateBenchmarkReport("/Users/haoc/Developer/task-bundle/examples");
+
+  assert.equal(report.bundleCount >= 2, true);
+  assert.equal(report.ranking[0]?.model, "gpt-5");
+  assert.equal(report.ranking[1]?.model, "claude-sonnet-4");
+  assert.ok(Math.abs((report.averageScore ?? 0) - 0.91) < 1e-9);
+  assert.equal(report.leaderboard[0]?.bestScore, 0.93);
+
+  const markdown = renderBenchmarkReportMarkdown(report);
+  assert.match(markdown, /# Benchmark Report/);
+  assert.match(markdown, /\| Rank \| Title \| Tool \| Model \| Status \| Score \| Events \| Workspace \|/);
 });

@@ -246,6 +246,7 @@ export async function inspectBundle(bundleDir: string): Promise<BundleInspection
   const artifacts = await detectArtifacts(resolvedBundleDir);
 
   return {
+    bundleDir: resolvedBundleDir,
     title: bundle.metadata.title,
     schemaVersion: bundle.metadata.schemaVersion,
     createdAt: bundle.metadata.createdAt,

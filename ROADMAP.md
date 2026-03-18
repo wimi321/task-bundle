@@ -14,6 +14,7 @@ Task Bundle started as a small CLI MVP. This roadmap turns it into a practical f
 - Done: `validate` and `scan` commands for replay checks and bundle collections
 - Done: artifact hashes and sizes in `bundle.json`
 - Done: benchmark-style outcome fields in bundle metadata
+- Done: benchmark report generation with ranking, leaderboard, and Markdown export
 - Done: CLI smoke tests and GitHub Actions CI
 - Done: Chinese and English documentation
 

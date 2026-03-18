@@ -104,3 +104,33 @@ test("scan --json finds example bundles in a directory", async () => {
   assert.ok(parsed.some((entry) => entry.model === "claude-sonnet-4"));
   assert.ok(parsed.some((entry) => entry.model === "gpt-5" && entry.outcome?.score === 0.93));
 });
+
+test("report --json summarizes a benchmark directory", async () => {
+  const stdout = await runCli(["report", "--json", "./examples"]);
+  const parsed = JSON.parse(stdout) as {
+    bundleCount: number;
+    ranking: Array<{ rank: number; model?: string }>;
+    leaderboard: Array<{ model?: string; averageScore?: number }>;
+  };
+
+  assert.equal(parsed.bundleCount >= 2, true);
+  assert.equal(parsed.ranking[0]?.rank, 1);
+  assert.equal(parsed.ranking[0]?.model, "gpt-5");
+  assert.equal(parsed.leaderboard[0]?.model, "gpt-5");
+});
+
+test("report writes a markdown file", async () => {
+  const tempDir = await makeTempDir("taskbundle-report-");
+
+  try {
+    const outputPath = path.join(tempDir, "report.md");
+    await runCli(["report", "./examples", "--out", outputPath]);
+    assert.equal(await pathExists(outputPath), true);
+
+    const markdown = await readFile(outputPath, "utf8");
+    assert.match(markdown, /# Benchmark Report/);
+    assert.match(markdown, /## Ranking/);
+  } finally {
+    await rm(tempDir, { recursive: true, force: true });
+  }
+});

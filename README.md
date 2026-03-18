@@ -77,19 +77,25 @@ npm run dev -- validate ./examples/hello-world-bundle
 npm run dev -- scan ./examples
 ```
 
-6. Generate starter inputs:
+6. Generate a benchmark report:
+
+```bash
+npm run dev -- report ./examples --out ./dist/benchmark-report.md
+```
+
+7. Generate starter inputs:
 
 ```bash
 npm run dev -- init --out ./starter
 ```
 
-7. Pack from the generated config:
+8. Pack from the generated config:
 
 ```bash
 npm run dev -- pack --config ./starter/taskbundle.config.json
 ```
 
-8. Archive the result:
+9. Archive the result:
 
 ```bash
 npm run dev -- archive ./starter/bundle-output --out ./starter/bundle-output.tar.gz
@@ -201,6 +207,13 @@ Scan a directory for bundle folders:
 npm run dev -- scan ./examples
 ```
 
+### `taskbundle report`
+Generate a benchmark-style ranking and optional Markdown report:
+
+```bash
+npm run dev -- report ./examples --out ./dist/benchmark-report.md
+```
+
 ## Example Bundles
 
 The repository includes two real examples:
@@ -208,6 +221,8 @@ The repository includes two real examples:
 - [examples/hello-world-bundle-claude](./examples/hello-world-bundle-claude)
 
 They represent the same task captured from different tool/model combinations so `compare` has something meaningful to show.
+
+You can also point `taskbundle report` at the same directory to generate a small benchmark-style leaderboard.
 
 ## Bundle Format At A Glance
 

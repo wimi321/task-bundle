@@ -58,6 +58,7 @@ export interface BundleContents {
 }
 
 export interface BundleInspection {
+  bundleDir: string;
   title: string;
   schemaVersion: string;
   createdAt: string;
@@ -172,4 +173,50 @@ export interface BundlePackConfig {
   score?: number;
   judgeNotes?: string;
   promptSource?: string;
+}
+
+export interface BenchmarkRunEntry {
+  rank: number;
+  title: string;
+  bundleDir: string;
+  tool?: string;
+  model?: string;
+  status?: BundleOutcome["status"];
+  score?: number;
+  repo?: string;
+  commit?: string;
+  branch?: string;
+  eventCount: number;
+  workspaceFileCount: number;
+  promptSource?: string;
+}
+
+export interface BenchmarkLeaderboardEntry {
+  key: string;
+  tool?: string;
+  model?: string;
+  runs: number;
+  scoredRuns: number;
+  successCount: number;
+  averageScore?: number;
+  bestScore?: number;
+}
+
+export interface BenchmarkTaskSummary {
+  title: string;
+  runs: number;
+  bestScore?: number;
+  bestRun?: BenchmarkRunEntry;
+}
+
+export interface BenchmarkReport {
+  generatedAt: string;
+  rootDir: string;
+  bundleCount: number;
+  scoredBundleCount: number;
+  averageScore?: number;
+  statusCounts: Record<string, number>;
+  ranking: BenchmarkRunEntry[];
+  leaderboard: BenchmarkLeaderboardEntry[];
+  tasks: BenchmarkTaskSummary[];
 }

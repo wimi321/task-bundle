@@ -14,6 +14,7 @@ Task Bundle 目前已经从一个小型 CLI MVP，走到了“可实际使用的
 - 已完成：`validate` 与 `scan` 命令，用于 replay 校验和 bundle 集合扫描
 - 已完成：artifact 哈希和大小写入 `bundle.json`
 - 已完成：bundle metadata 中的 benchmark / judge 结果字段
+- 已完成：benchmark report 生成，支持排行榜、leaderboard 和 Markdown 导出
 - 已完成：CLI smoke tests 和 GitHub Actions CI
 - 已完成：中英文文档
 

@@ -8,6 +8,8 @@ The art direction is intentionally warm-editorial rather than generic SaaS gradi
 
 - `assets/hero-banner.svg`
   Embedded at the top of the README to make the repository landing page feel like a product, not just a package listing.
+- `assets/workflow-overview.svg`
+  A second README visual that explains the capture -> inspect -> compare -> report loop in one glance.
 - `assets/social-preview.svg`
   Source artwork for GitHub social preview uploads.
 - `assets/social-preview.png`

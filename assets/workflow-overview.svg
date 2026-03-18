@@ -1,0 +1,82 @@
+<svg width="1600" height="460" viewBox="0 0 1600 460" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Task Bundle workflow overview</title>
+  <desc id="desc">A workflow graphic showing how Task Bundle captures, inspects, compares, and reports AI coding runs.</desc>
+  <defs>
+    <linearGradient id="bg" x1="92" y1="50" x2="1520" y2="418" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10212E"/>
+      <stop offset="0.5" stop-color="#17364C"/>
+      <stop offset="1" stop-color="#21485C"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="375" y1="164" x2="1217" y2="343" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7BE0D4"/>
+      <stop offset="1" stop-color="#FFD18B"/>
+    </linearGradient>
+    <linearGradient id="card" x1="146" y1="112" x2="380" y2="363" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6EA"/>
+      <stop offset="1" stop-color="#F1E0CC"/>
+    </linearGradient>
+    <filter id="shadow" x="95" y="84" width="1410" height="308" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="16"/>
+      <feGaussianBlur stdDeviation="18"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.027451 0 0 0 0 0.109804 0 0 0 0 0.164706 0 0 0 0.18 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="460" rx="32" fill="url(#bg)"/>
+  <path d="M0 347C136 309 268 288 400 300C553 314 642 382 790 384C972 388 1062 295 1223 276C1360 260 1464 290 1600 337V460H0V347Z" fill="#0E1D27" fill-opacity="0.46"/>
+  <path d="M145 90H1455" stroke="url(#accent)" stroke-opacity="0.3" stroke-width="3" stroke-linecap="round"/>
+  <text x="148" y="62" fill="#FFF4E6" font-size="30" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">How Task Bundle turns one run into something reusable</text>
+
+  <g filter="url(#shadow)">
+    <g transform="translate(128 108)">
+      <rect x="0" y="0" width="264" height="216" rx="24" fill="url(#card)"/>
+      <text x="26" y="46" fill="#17354A" font-size="18" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">1. Capture the task</text>
+      <text x="26" y="78" fill="#5D7380" font-size="16" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Package the run into standard files</text>
+      <rect x="26" y="108" width="212" height="76" rx="18" fill="#FFFFFF" fill-opacity="0.84" stroke="#DCC7AF"/>
+      <text x="44" y="137" fill="#1E4257" font-size="17" font-weight="800" font-family="'SF Mono',Menlo,Monaco,monospace">task.md</text>
+      <text x="44" y="161" fill="#5A7688" font-size="15" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">summary.md</text>
+      <text x="44" y="185" fill="#5A7688" font-size="15" font-weight="600" font-family="'SF Mono',Menlo,Monaco,monospace">result.diff</text>
+    </g>
+
+    <g transform="translate(466 108)">
+      <rect x="0" y="0" width="264" height="216" rx="24" fill="#17364B"/>
+      <text x="26" y="46" fill="#FFF6EA" font-size="18" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">2. Inspect the run</text>
+      <text x="26" y="78" fill="#A7C9D1" font-size="16" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">See what happened without replay theater</text>
+      <rect x="26" y="108" width="212" height="76" rx="18" fill="#FFF6EA" fill-opacity="0.1" stroke="#88D8CC" stroke-opacity="0.28"/>
+      <text x="44" y="137" fill="#FFFFFF" font-size="16" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">status: success</text>
+      <text x="44" y="161" fill="#AEEFE5" font-size="15" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">events: 3</text>
+      <text x="44" y="185" fill="#FFD79A" font-size="15" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">workspace files: 1</text>
+    </g>
+
+    <g transform="translate(804 108)">
+      <rect x="0" y="0" width="264" height="216" rx="24" fill="url(#card)"/>
+      <text x="26" y="46" fill="#17354A" font-size="18" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">3. Compare tools</text>
+      <text x="26" y="78" fill="#5D7380" font-size="16" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Keep metadata and scores side by side</text>
+      <rect x="26" y="108" width="212" height="76" rx="18" fill="#FFFFFF" fill-opacity="0.84" stroke="#DCC7AF"/>
+      <text x="44" y="137" fill="#1E4257" font-size="16" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">codex / gpt-5    0.93</text>
+      <text x="44" y="161" fill="#5A7688" font-size="15" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">claude-code      0.89</text>
+      <text x="44" y="185" fill="#CF6F3B" font-size="15" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">delta            +0.04</text>
+    </g>
+
+    <g transform="translate(1142 108)">
+      <rect x="0" y="0" width="264" height="216" rx="24" fill="#17364B"/>
+      <text x="26" y="46" fill="#FFF6EA" font-size="18" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">4. Report the results</text>
+      <text x="26" y="78" fill="#A7C9D1" font-size="16" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Generate a small benchmark story from runs</text>
+      <rect x="26" y="108" width="212" height="76" rx="18" fill="#FFF6EA" fill-opacity="0.1" stroke="#FFD18B" stroke-opacity="0.34"/>
+      <text x="44" y="137" fill="#FFF6EA" font-size="16" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Bundles: 2</text>
+      <text x="44" y="161" fill="#AEEFE5" font-size="15" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Average score: 0.91</text>
+      <text x="44" y="185" fill="#FFD79A" font-size="15" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Leaderboard ready</text>
+    </g>
+  </g>
+
+  <path d="M394 216H453" stroke="#A9E5DB" stroke-width="4" stroke-linecap="round"/>
+  <path d="M448 208L465 216L448 224" stroke="#A9E5DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M732 216H791" stroke="#A9E5DB" stroke-width="4" stroke-linecap="round"/>
+  <path d="M786 208L803 216L786 224" stroke="#A9E5DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1070 216H1129" stroke="#A9E5DB" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1124 208L1141 216L1124 224" stroke="#A9E5DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -6,6 +6,8 @@ Task Bundle 在 `assets/` 目录下提供了一套可直接用于仓库展示的
 
 - `assets/hero-banner.svg`
   中英文 README 顶部使用的主视觉横幅，可继续编辑。
+- `assets/workflow-overview.svg`
+  README 里的第二张主视觉，用来一眼解释 capture -> inspect -> compare -> report 这条路径。
 - `assets/social-preview.svg`
   GitHub 社交预览图的可编辑源文件。
 - `assets/social-preview.png`

@@ -7,11 +7,13 @@
 </p>
 
 <p align="center"><strong>Turn AI coding runs into portable, replayable, benchmark-ready task bundles.</strong></p>
-<p align="center">The missing middle layer between raw chat logs and heavyweight benchmark platforms.</p>
+<p align="center">A practical format between raw chat logs and heavyweight benchmark platforms.</p>
 <p align="center">
   <a href="#quickstart"><strong>Quick Start</strong></a> ·
   <a href="#real-bundles"><strong>Real Output</strong></a> ·
+  <a href="#format-vs-alternatives"><strong>Why This Format</strong></a> ·
   <a href="./docs/bundle-format.md"><strong>Bundle Format</strong></a> ·
+  <a href="./docs/sample-benchmark-report.md"><strong>Sample Report</strong></a> ·
   <a href="./ROADMAP.md"><strong>Roadmap</strong></a> ·
   <a href="./docs/branding.md"><strong>Brand Assets</strong></a>
 </p>
@@ -24,13 +26,13 @@ Task Bundle is a TypeScript + Node.js CLI for teams building agents, evals, codi
 
 Package a task once, inspect it later, compare tools on the same starting point, and generate benchmark-style reports from real artifacts.
 
-Why people star it:
-- turn one AI coding run into a clean, shareable directory instead of a screenshot, transcript, or loose patch
-- compare Codex, Claude Code, Cursor, or internal agents with real metadata, hashes, and outcome fields
-- generate benchmark-style reports from a folder of bundles without building a full evaluation platform first
-- keep replay grounded in re-execution and comparison, not token-by-token theater
+It helps you:
+- turn one AI coding run into a clean, shareable directory instead of leaving it scattered across screenshots, transcripts, or loose patches
+- compare Codex, Claude Code, Cursor, or internal agents using metadata, hashes, and outcome fields
+- generate benchmark-style reports from a folder of bundles without standing up a full evaluation platform first
+- preserve enough context for reruns and comparisons without requiring token-perfect recording
 
-If you've ever wanted a format between "a raw chat log" and "a full benchmark platform", this project is that missing middle layer.
+It fits the gap between raw logs and full evaluation systems: light enough for day-to-day work, structured enough for replay and benchmarking.
 
 It is designed for workflows where you want to:
 - inspect what happened
@@ -59,6 +61,8 @@ npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bund
 ```
 
 If you want the shortest possible proof that the project already works, this is it.
+
+![Task Bundle workflow overview](./assets/workflow-overview.svg)
 
 <a id="real-bundles"></a>
 
@@ -106,6 +110,22 @@ Ranking
 2. Fix greeting punctuation | claude-code / claude-sonnet-4 | success | score 0.89
 ```
 
+Browse the committed example report:
+- [docs/sample-benchmark-report.md](./docs/sample-benchmark-report.md)
+- [docs/sample-benchmark-report.zh-CN.md](./docs/sample-benchmark-report.zh-CN.md)
+
+<a id="format-vs-alternatives"></a>
+
+## How It Compares To Common Alternatives
+
+| Need | Chat logs | Zip or tarball | Full benchmark platform | Task Bundle |
+| --- | --- | --- | --- | --- |
+| Share the original task and result together | Partial | Yes | Yes | Yes |
+| Compare different tools on the same starting point | Weak | Manual | Yes | Yes |
+| Carry artifact hashes and outcome metadata | No | No | Yes | Yes |
+| Stay lightweight enough for everyday coding workflows | Yes | Yes | No | Yes |
+| Grow into replay and benchmark workflows later | Weak | Weak | Yes | Yes |
+
 ## Why It Matters
 
 Most AI coding work disappears into screenshots, transcripts, or one-off patches.
@@ -114,7 +134,7 @@ Task Bundle gives you a durable unit you can inspect, archive, compare, validate
 - agent builders who want reproducible tasks
 - eval and benchmark authors who need structured task artifacts
 - teams comparing Codex, Claude Code, Cursor, or custom tools
-- researchers who care about re-execution instead of token-by-token theater
+- researchers who care about re-execution over token-perfect replay
 
 ## What Replay Means Here
 
@@ -322,6 +342,8 @@ The repository includes two real examples:
 They represent the same task captured from different tool/model combinations so `compare` has something meaningful to show.
 
 You can also point `taskbundle report` at the same directory to generate a small benchmark-style leaderboard.
+
+For a committed snapshot of that output, see [docs/sample-benchmark-report.md](./docs/sample-benchmark-report.md).
 
 ## Bundle Format At A Glance
 

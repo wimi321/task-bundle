@@ -7,11 +7,13 @@
 </p>
 
 <p align="center"><strong>把 AI coding 过程变成可分享、可重跑、可比较、可做 benchmark 的任务包。</strong></p>
-<p align="center">它正好补上“聊天记录太散、benchmark 平台太重”之间缺失的那层基础设施。</p>
+<p align="center">它适合放在聊天记录和 benchmark 平台之间，承接真实任务与结果。</p>
 <p align="center">
   <a href="#quickstart"><strong>快速开始</strong></a> ·
   <a href="#real-bundles"><strong>真实输出</strong></a> ·
+  <a href="#format-vs-alternatives"><strong>为什么是这个格式</strong></a> ·
   <a href="./docs/bundle-format.zh-CN.md"><strong>格式说明</strong></a> ·
+  <a href="./docs/sample-benchmark-report.zh-CN.md"><strong>示例报告</strong></a> ·
   <a href="./ROADMAP.zh-CN.md"><strong>路线图</strong></a> ·
   <a href="./docs/branding.zh-CN.md"><strong>品牌素材</strong></a>
 </p>
@@ -22,15 +24,15 @@
 
 Task Bundle 是一个 TypeScript + Node.js CLI，适合 agent、eval、benchmark、可复现实验这类工作流。
 
-一次打包，之后就能 inspect、compare、validate、report，也能把不同工具放到同一起点上做更公平的对照。
+把一次运行整理好之后，就可以 inspect、compare、validate、report，也方便把不同工具放到同一起点上做对照。
 
-大家愿意给它点 star，通常是因为这些点：
-- 它能把一次 AI coding 任务整理成干净、稳定、可搬运的目录，而不是散落的截图、聊天记录或 patch
-- 它能比较 Codex、Claude Code、Cursor 或内部工具的结果，而且比较依据是真实元数据、哈希和 outcome 字段
-- 它能从一组 bundle 直接生成 benchmark 风格报告，不用一开始就搭完整评测平台
-- 它对 replay 的理解更务实，强调“可重跑、可比较”，而不是追求逐 token 复刻的表演感
+它主要解决这些问题：
+- 把一次 AI coding 任务整理成干净、稳定、可搬运的目录，而不是散落在截图、聊天记录或 patch 里
+- 比较 Codex、Claude Code、Cursor 或内部工具的结果，而且比较依据包括元数据、哈希和 outcome 字段
+- 从一组 bundle 直接生成 benchmark 风格报告，不用先搭完整评测平台
+- 为后续重跑和比较保留足够上下文，而不是依赖逐 token 录制
 
-如果你一直觉得“聊天记录太散、benchmark 平台太重”，这个项目就是中间那层缺失的基础设施。
+它适合放在“聊天记录不够稳”和“完整 benchmark 平台太重”之间，作为更轻但足够结构化的方案。
 
 它适合这些场景：
 - 查看一次任务最后到底做了什么
@@ -59,6 +61,8 @@ npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bund
 ```
 
 如果你只想先确认“这项目现在到底能不能用”，这组命令就是最短路径。
+
+![Task Bundle workflow overview](./assets/workflow-overview.svg)
 
 <a id="real-bundles"></a>
 
@@ -106,6 +110,22 @@ Ranking
 2. Fix greeting punctuation | claude-code / claude-sonnet-4 | success | score 0.89
 ```
 
+你也可以直接点开仓库里提交好的示例报告：
+- [docs/sample-benchmark-report.zh-CN.md](./docs/sample-benchmark-report.zh-CN.md)
+- [docs/sample-benchmark-report.md](./docs/sample-benchmark-report.md)
+
+<a id="format-vs-alternatives"></a>
+
+## 和常见替代方案怎么区分
+
+| 需求 | 聊天记录 | Zip / tarball | 完整 benchmark 平台 | Task Bundle |
+| --- | --- | --- | --- | --- |
+| 把原始任务和最终结果放在一起分享 | 部分满足 | 可以 | 可以 | 可以 |
+| 在同一起点上比较不同工具 | 很弱 | 很靠手工 | 可以 | 可以 |
+| 携带 artifact 哈希和结果元数据 | 不行 | 不行 | 可以 | 可以 |
+| 足够轻，能融入日常 coding 工作流 | 可以 | 可以 | 不太行 | 可以 |
+| 之后继续长成 replay / benchmark 工作流 | 很弱 | 很弱 | 可以 | 可以 |
+
 ## 为什么值得关注
 
 很多 AI coding 结果最后只留下截图、聊天记录或者一个 patch，后续几乎没法稳定比较。
@@ -114,7 +134,7 @@ Task Bundle 想解决的就是这个空档：把一次任务变成一个可以 i
 - 想做可复现实验的 agent 作者
 - 想做任务评测和 benchmark 的团队
 - 想比较 Codex、Claude Code、Cursor 或内部工具的开发者
-- 不想被“逐 token 回放”误导、而是真正在意可重跑的人
+- 更关心可重跑，而不是逐 token 回放一致性的人
 
 ## 这里的 Replay 是什么意思
 
@@ -322,6 +342,8 @@ npm run dev -- report ./examples --out ./dist/benchmark-report.md
 它们表达的是同一个任务，但来自不同的工具 / 模型组合，所以 `compare` 命令有真实可看的结果。
 
 你也可以直接把这个目录交给 `taskbundle report`，生成一份小型 benchmark 排行榜。
+
+如果你想直接看一份已提交到仓库里的报告快照，可以打开 [docs/sample-benchmark-report.zh-CN.md](./docs/sample-benchmark-report.zh-CN.md)。
 
 ## Bundle 格式一眼看懂
 

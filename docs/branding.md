@@ -8,6 +8,8 @@ This repository includes the visual assets used in the README and GitHub social 
   Hero image used at the top of the README.
 - `assets/workflow-overview.svg`
   Workflow diagram used in the README.
+- `assets/quick-demo.gif`
+  Animated terminal walkthrough for the README quick start section.
 - `assets/terminal-showcase.svg`
   Three-panel terminal preview used to show real inspect, compare, and report output.
 - `assets/social-preview.svg`
@@ -24,3 +26,9 @@ This repository includes the visual assets used in the README and GitHub social 
 ## Local Export Tips
 
 The SVG files stay in the repository so they remain editable and easy to version.
+
+You can regenerate the demo GIF with:
+
+```bash
+python3 ./scripts/generate_demo_gif.py
+```

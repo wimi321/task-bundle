@@ -57,6 +57,8 @@ npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bund
 
 This is the fastest way to see the format in action.
 
+![Task Bundle quick demo](./assets/quick-demo.gif)
+
 ![Task Bundle workflow overview](./assets/workflow-overview.svg)
 
 <a id="example-output"></a>

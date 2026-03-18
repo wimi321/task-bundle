@@ -8,6 +8,8 @@
   README 顶部使用的主视觉横幅。
 - `assets/workflow-overview.svg`
   README 中使用的工作流示意图。
+- `assets/quick-demo.gif`
+  README 快速开始部分使用的动图演示。
 - `assets/terminal-showcase.svg`
   README 中使用的终端展示图，用来展示 inspect、compare、report 的真实输出。
 - `assets/social-preview.svg`
@@ -30,3 +32,9 @@ sips -s format png ./assets/social-preview.svg --out ./assets/social-preview.png
 ```
 
 仓库里保留 SVG，是为了继续编辑和版本管理更方便。
+
+如果要重新生成演示 GIF，可以运行：
+
+```bash
+python3 ./scripts/generate_demo_gif.py
+```

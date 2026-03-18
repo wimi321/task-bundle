@@ -57,6 +57,8 @@ npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bund
 
 这是最快看懂项目在做什么的一组命令。
 
+![Task Bundle quick demo](./assets/quick-demo.gif)
+
 ![Task Bundle workflow overview](./assets/workflow-overview.svg)
 
 <a id="example-output"></a>

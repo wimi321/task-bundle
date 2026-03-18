@@ -8,6 +8,8 @@ This repository includes the visual assets used in the README and GitHub social 
   Hero image used at the top of the README.
 - `assets/workflow-overview.svg`
   Workflow diagram used in the README.
+- `assets/terminal-showcase.svg`
+  Three-panel terminal preview used to show real inspect, compare, and report output.
 - `assets/social-preview.svg`
   Source artwork for GitHub social preview uploads.
 - `assets/social-preview.png`

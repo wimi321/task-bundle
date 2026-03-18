@@ -8,6 +8,8 @@
   README 顶部使用的主视觉横幅。
 - `assets/workflow-overview.svg`
   README 中使用的工作流示意图。
+- `assets/terminal-showcase.svg`
+  README 中使用的终端展示图，用来展示 inspect、compare、report 的真实输出。
 - `assets/social-preview.svg`
   GitHub 社交预览图的可编辑源文件。
 - `assets/social-preview.png`

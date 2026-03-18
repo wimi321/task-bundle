@@ -63,6 +63,8 @@ This is the fastest way to see the format in action.
 
 ## Example Output
 
+![Task Bundle terminal showcase](./assets/terminal-showcase.svg)
+
 Inspect a bundle:
 
 ```text

@@ -63,6 +63,8 @@ npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bund
 
 ## 示例输出
 
+![Task Bundle terminal showcase](./assets/terminal-showcase.svg)
+
 先查看一个 bundle：
 
 ```text

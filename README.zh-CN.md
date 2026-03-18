@@ -2,19 +2,27 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
+<p align="center">
+  <img src="./assets/hero-banner.svg" alt="Task Bundle hero banner" width="100%" />
+</p>
+
+<p align="center"><strong>把 AI coding 过程变成可分享、可重跑、可比较、可做 benchmark 的任务包。</strong></p>
+<p align="center">它正好补上“聊天记录太散、benchmark 平台太重”之间缺失的那层基础设施。</p>
+<p align="center">
+  <a href="#quickstart"><strong>快速开始</strong></a> ·
+  <a href="#real-bundles"><strong>真实输出</strong></a> ·
+  <a href="./docs/bundle-format.zh-CN.md"><strong>格式说明</strong></a> ·
+  <a href="./ROADMAP.zh-CN.md"><strong>路线图</strong></a> ·
+  <a href="./docs/branding.zh-CN.md"><strong>品牌素材</strong></a>
+</p>
+
 [![CI](https://github.com/wimi321/task-bundle/actions/workflows/ci.yml/badge.svg)](https://github.com/wimi321/task-bundle/actions/workflows/ci.yml)
 [![GitHub stars](https://img.shields.io/github/stars/wimi321/task-bundle?style=social)](https://github.com/wimi321/task-bundle/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-![Task Bundle hero banner](./assets/hero-banner.svg)
-
-把 AI coding 过程，变成可分享、可重跑、可比较、可做 benchmark 的任务包。
-
-它是“原始聊天记录”和“重型 benchmark 平台”之间，那层真正好用的中间层。
+Task Bundle 是一个 TypeScript + Node.js CLI，适合 agent、eval、benchmark、可复现实验这类工作流。
 
 一次打包，之后就能 inspect、compare、validate、report，也能把不同工具放到同一起点上做更公平的对照。
-
-Task Bundle 是一个 TypeScript + Node.js CLI，适合 agent、eval、benchmark、可复现实验这类工作流。
 
 大家愿意给它点 star，通常是因为这些点：
 - 它能把一次 AI coding 任务整理成干净、稳定、可搬运的目录，而不是散落的截图、聊天记录或 patch
@@ -37,6 +45,66 @@ Task Bundle 是一个 TypeScript + Node.js CLI，适合 agent、eval、benchmark
 - provider 路由器
 - benchmark 平台
 - token 级录制器
+
+<a id="quickstart"></a>
+
+## 快速开始
+
+用仓库自带示例，1 分钟就能跑出一个真实对比：
+
+```bash
+npm install
+npm run build
+npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bundle-claude
+```
+
+如果你只想先确认“这项目现在到底能不能用”，这组命令就是最短路径。
+
+<a id="real-bundles"></a>
+
+## 看看真实输出
+
+先 inspect 一个 bundle：
+
+```text
+$ npm run dev -- inspect ./examples/hello-world-bundle
+Task Bundle
+-----------
+Title: Fix greeting punctuation
+Tool: codex
+Model: gpt-5
+Status: success
+Score: 0.93
+Workspace files: 1
+Events: 3
+```
+
+再比较两个工具在同一个任务上的结果：
+
+```text
+$ npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bundle-claude
+Task Bundle Comparison
+----------------------
+Left tool: codex
+Right tool: claude-code
+Left score: 0.93
+Right score: 0.89
+Score delta: 0.04
+Workspace file delta: 0
+Event count delta: -1
+```
+
+最后从一组 bundle 直接生成 benchmark 风格摘要：
+
+```text
+$ npm run dev -- report ./examples --out ./dist/benchmark-report.md
+Bundles: 2
+Average score: 0.91
+
+Ranking
+1. Fix greeting punctuation | codex / gpt-5 | success | score 0.93
+2. Fix greeting punctuation | claude-code / claude-sonnet-4 | success | score 0.89
+```
 
 ## 为什么值得关注
 
@@ -73,7 +141,7 @@ task-bundle/
 - [docs/bundle-format.md](./docs/bundle-format.md)
 - [docs/design-decisions.md](./docs/design-decisions.md)
 - [docs/replay-contract.md](./docs/replay-contract.md)
-- [docs/branding.md](./docs/branding.md)
+- [docs/branding.zh-CN.md](./docs/branding.zh-CN.md)
 
 ## 五分钟演示
 

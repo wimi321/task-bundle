@@ -2,19 +2,27 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
+<p align="center">
+  <img src="./assets/hero-banner.svg" alt="Task Bundle hero banner" width="100%" />
+</p>
+
+<p align="center"><strong>Turn AI coding runs into portable, replayable, benchmark-ready task bundles.</strong></p>
+<p align="center">The missing middle layer between raw chat logs and heavyweight benchmark platforms.</p>
+<p align="center">
+  <a href="#quickstart"><strong>Quick Start</strong></a> ·
+  <a href="#real-bundles"><strong>Real Output</strong></a> ·
+  <a href="./docs/bundle-format.md"><strong>Bundle Format</strong></a> ·
+  <a href="./ROADMAP.md"><strong>Roadmap</strong></a> ·
+  <a href="./docs/branding.md"><strong>Brand Assets</strong></a>
+</p>
+
 [![CI](https://github.com/wimi321/task-bundle/actions/workflows/ci.yml/badge.svg)](https://github.com/wimi321/task-bundle/actions/workflows/ci.yml)
 [![GitHub stars](https://img.shields.io/github/stars/wimi321/task-bundle?style=social)](https://github.com/wimi321/task-bundle/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-![Task Bundle hero banner](./assets/hero-banner.svg)
-
-Turn AI coding runs into portable, replayable, benchmark-ready task bundles.
-
-The missing middle layer between raw chat logs and heavyweight benchmark platforms.
+Task Bundle is a TypeScript + Node.js CLI for teams building agents, evals, coding benchmarks, and reproducible AI workflows.
 
 Package a task once, inspect it later, compare tools on the same starting point, and generate benchmark-style reports from real artifacts.
-
-Task Bundle is a TypeScript + Node.js CLI for teams building agents, evals, coding benchmarks, and reproducible AI workflows.
 
 Why people star it:
 - turn one AI coding run into a clean, shareable directory instead of a screenshot, transcript, or loose patch
@@ -37,6 +45,66 @@ It is intentionally not:
 - a provider router
 - a benchmark platform
 - a token-by-token recorder
+
+<a id="quickstart"></a>
+
+## Quick Start
+
+Run the repo against real example bundles in about a minute:
+
+```bash
+npm install
+npm run build
+npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bundle-claude
+```
+
+If you want the shortest possible proof that the project already works, this is it.
+
+<a id="real-bundles"></a>
+
+## See It On Real Bundles
+
+Inspect a bundle:
+
+```text
+$ npm run dev -- inspect ./examples/hello-world-bundle
+Task Bundle
+-----------
+Title: Fix greeting punctuation
+Tool: codex
+Model: gpt-5
+Status: success
+Score: 0.93
+Workspace files: 1
+Events: 3
+```
+
+Compare two tools on the same task:
+
+```text
+$ npm run dev -- compare ./examples/hello-world-bundle ./examples/hello-world-bundle-claude
+Task Bundle Comparison
+----------------------
+Left tool: codex
+Right tool: claude-code
+Left score: 0.93
+Right score: 0.89
+Score delta: 0.04
+Workspace file delta: 0
+Event count delta: -1
+```
+
+Generate a benchmark-style summary from a directory of runs:
+
+```text
+$ npm run dev -- report ./examples --out ./dist/benchmark-report.md
+Bundles: 2
+Average score: 0.91
+
+Ranking
+1. Fix greeting punctuation | codex / gpt-5 | success | score 0.93
+2. Fix greeting punctuation | claude-code / claude-sonnet-4 | success | score 0.89
+```
 
 ## Why It Matters
 

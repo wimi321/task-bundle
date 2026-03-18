@@ -1,5 +1,7 @@
 # Task Bundle
 
+[English](./README.md) | [简体中文](./README.zh-CN.md)
+
 Task Bundle is a small TypeScript + Node.js CLI for packaging one AI coding task into a portable directory.
 
 It is built for workflows where you want to:

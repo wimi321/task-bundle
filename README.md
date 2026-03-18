@@ -7,7 +7,7 @@
 </p>
 
 <p align="center"><strong>Turn AI coding runs into portable, replayable task bundles.</strong></p>
-<p align="center">Useful when chat logs are too loose and full benchmark platforms are too heavy.</p>
+<p align="center">Useful when chat logs are too loose and full benchmark platforms are more than you need.</p>
 <p align="center">
   <a href="#quickstart"><strong>Quick Start</strong></a> ·
   <a href="#example-output"><strong>Example Output</strong></a> ·
@@ -29,7 +29,7 @@ Use it to:
 - generate benchmark-style reports from a folder of bundles
 - preserve enough context for reruns without aiming for token-perfect replay
 
-It works best when you want to:
+Reach for it when you want to:
 - inspect what happened
 - share a task with someone else
 - rerun a task later
@@ -125,7 +125,7 @@ See the committed sample report:
 
 Most AI coding work disappears into screenshots, transcripts, or one-off patches.
 
-Task Bundle gives you a durable unit you can inspect, archive, compare, validate, and report on. That makes it useful for:
+Task Bundle gives you a stable task artifact you can inspect, archive, compare, validate, and report on. That makes it useful for:
 - agent builders who want reproducible tasks
 - eval and benchmark authors who need structured task artifacts
 - teams comparing Codex, Claude Code, Cursor, or custom tools

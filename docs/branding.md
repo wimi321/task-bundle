@@ -8,6 +8,8 @@ This repository includes the visual assets used in the README and GitHub social 
   Hero image used at the top of the README.
 - `assets/workflow-overview.svg`
   Workflow diagram used in the README.
+- `assets/audience-fit.svg`
+  Audience card graphic used to show which teams Task Bundle is for.
 - `assets/quick-demo.gif`
   Animated terminal walkthrough for the README quick start section.
 - `assets/terminal-showcase.svg`

@@ -11,8 +11,10 @@
 <p align="center">
   <a href="#quickstart"><strong>Quick Start</strong></a> ·
   <a href="#example-output"><strong>Example Output</strong></a> ·
+  <a href="#who-its-for"><strong>Who It's For</strong></a> ·
   <a href="#where-it-fits"><strong>Where It Fits</strong></a> ·
   <a href="./docs/bundle-format.md"><strong>Bundle Format</strong></a> ·
+  <a href="./docs/use-cases.md"><strong>Use Cases</strong></a> ·
   <a href="./docs/sample-benchmark-report.md"><strong>Sample Report</strong></a> ·
   <a href="./ROADMAP.md"><strong>Roadmap</strong></a>
 </p>
@@ -35,6 +37,19 @@ Reach for it when you want to:
 - rerun a task later
 - compare outputs across tools and models
 - grow toward replay and benchmark workflows
+
+<a id="who-its-for"></a>
+
+## Who It's For
+
+![Task Bundle audience fit](./assets/audience-fit.svg)
+
+This tends to resonate most with:
+- agent builders who want durable task artifacts instead of loose transcripts
+- evaluation teams that want to grow into benchmark workflows gradually
+- teams comparing multiple coding tools on the same starting point
+
+For more concrete scenarios, see [docs/use-cases.md](./docs/use-cases.md).
 
 It is not:
 - an agent framework
@@ -160,6 +175,7 @@ See:
 - [docs/bundle-format.zh-CN.md](./docs/bundle-format.zh-CN.md)
 - [docs/design-decisions.md](./docs/design-decisions.md)
 - [docs/replay-contract.md](./docs/replay-contract.md)
+- [docs/use-cases.md](./docs/use-cases.md)
 
 ## Five-Minute Demo
 

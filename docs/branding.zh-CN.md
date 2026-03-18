@@ -8,6 +8,8 @@
   README 顶部使用的主视觉横幅。
 - `assets/workflow-overview.svg`
   README 中使用的工作流示意图。
+- `assets/audience-fit.svg`
+  README 中使用的受众卡片图，用来说明 Task Bundle 更适合哪些团队。
 - `assets/quick-demo.gif`
   README 快速开始部分使用的动图演示。
 - `assets/terminal-showcase.svg`

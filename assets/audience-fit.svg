@@ -1,0 +1,81 @@
+<svg width="1600" height="640" viewBox="0 0 1600 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Task Bundle audience fit</title>
+  <desc id="desc">Three audience cards showing who Task Bundle is for: agent builders, evaluation teams, and tool comparison workflows.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="72" x2="1492" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10212E"/>
+      <stop offset="0.48" stop-color="#17364C"/>
+      <stop offset="1" stop-color="#234D62"/>
+    </linearGradient>
+    <linearGradient id="cardLight" x1="169" y1="176" x2="476" y2="494" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6EA"/>
+      <stop offset="1" stop-color="#F1E0CC"/>
+    </linearGradient>
+    <linearGradient id="cardDark" x1="658" y1="166" x2="979" y2="492" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#19364A"/>
+      <stop offset="1" stop-color="#102635"/>
+    </linearGradient>
+    <linearGradient id="cardWarm" x1="1146" y1="176" x2="1452" y2="494" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF1DE"/>
+      <stop offset="1" stop-color="#F2D7B5"/>
+    </linearGradient>
+    <filter id="shadow" x="120" y="126" width="1360" height="470" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="20"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0235294 0 0 0 0 0.0901961 0 0 0 0 0.137255 0 0 0 0.22 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="640" rx="32" fill="url(#bg)"/>
+  <path d="M0 480C130 424 242 396 380 410C526 424 620 523 776 516C936 509 1027 410 1176 384C1328 358 1430 390 1600 468V640H0V480Z" fill="#0D1C25" fill-opacity="0.42"/>
+  <path d="M146 100H664" stroke="#7BE0D4" stroke-opacity="0.28" stroke-width="3" stroke-linecap="round"/>
+  <path d="M146 128H404" stroke="#7BE0D4" stroke-opacity="0.15" stroke-width="3" stroke-linecap="round"/>
+
+  <text x="148" y="208" fill="#FFF5E8" font-size="58" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Who It Helps
+  </text>
+  <text x="148" y="260" fill="#CDE8EA" font-size="24" font-weight="500" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    Task Bundle fits teams that want more structure than chat logs
+  </text>
+  <text x="148" y="296" fill="#CDE8EA" font-size="24" font-weight="500" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+    without jumping straight to a full benchmark platform.
+  </text>
+
+  <g filter="url(#shadow)">
+    <g transform="translate(148 338)">
+      <rect x="0" y="0" width="396" height="224" rx="26" fill="url(#cardLight)"/>
+      <text x="30" y="56" fill="#17354A" font-size="24" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Agent builders</text>
+      <text x="30" y="90" fill="#5C7380" font-size="17" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Keep task context, diffs,</text>
+      <text x="30" y="114" fill="#5C7380" font-size="17" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">and workspace files together.</text>
+      <text x="30" y="148" fill="#1F4459" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">- package runs for later review</text>
+      <text x="30" y="176" fill="#1F4459" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">- share reproducible tasks with teammates</text>
+      <text x="30" y="204" fill="#1F4459" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">- retain context without full transcripts</text>
+    </g>
+
+    <g transform="translate(602 338)">
+      <rect x="0" y="0" width="396" height="224" rx="26" fill="url(#cardDark)"/>
+      <text x="30" y="56" fill="#FFF5E8" font-size="24" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Eval and benchmark</text>
+      <text x="30" y="84" fill="#FFF5E8" font-size="24" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">teams</text>
+      <text x="30" y="114" fill="#A9C9D2" font-size="17" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Grow from single runs into</text>
+      <text x="30" y="138" fill="#A9C9D2" font-size="17" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">comparable task collections.</text>
+      <text x="30" y="164" fill="#AEEFE5" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">- keep scores and outcome fields with artifacts</text>
+      <text x="30" y="192" fill="#AEEFE5" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">- rank runs without building dashboards first</text>
+      <text x="30" y="220" fill="#AEEFE5" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">- accumulate evidence before platform work</text>
+    </g>
+
+    <g transform="translate(1056 338)">
+      <rect x="0" y="0" width="396" height="224" rx="26" fill="url(#cardWarm)"/>
+      <text x="30" y="56" fill="#17354A" font-size="24" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Tool comparison</text>
+      <text x="30" y="84" fill="#17354A" font-size="24" font-weight="800" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">workflows</text>
+      <text x="30" y="114" fill="#6A7B84" font-size="17" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">Put different tools on the same</text>
+      <text x="30" y="138" fill="#6A7B84" font-size="17" font-weight="600" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">starting point.</text>
+      <text x="30" y="164" fill="#1F4459" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">- compare Codex, Claude Code, Cursor</text>
+      <text x="30" y="192" fill="#1F4459" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">- inspect metadata and artifact deltas</text>
+      <text x="30" y="220" fill="#1F4459" font-size="17" font-weight="700" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">- keep a paper trail for reruns</text>
+    </g>
+  </g>
+</svg>

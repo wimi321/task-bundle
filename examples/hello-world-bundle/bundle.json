@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "hello-world-bundle",
+  "title": "Fix greeting punctuation",
+  "createdAt": "2026-03-18T00:00:00.000Z",
+  "tool": "codex",
+  "model": "gpt-5",
+  "runtime": "node",
+  "repo": "example/hello-world",
+  "commit": "abc123",
+  "tags": ["demo", "mvp"],
+  "artifacts": {
+    "task": "task.md",
+    "summary": "summary.md",
+    "diff": "result.diff",
+    "events": "events.jsonl",
+    "workspaceManifest": "workspace/manifest.json",
+    "workspaceFilesDir": "workspace/files"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "capturedAt": "2026-03-18T00:00:04.000Z",
+  "root": "workspace/files",
+  "fileCount": 1,
+  "files": [
+    {
+      "path": "src/greet.ts",
+      "sha256": "a890275b221931c2b0f03061f70c93f73f59f6a542b1f0b81f4507ebc86bc5c0",
+      "size": 62
+    }
+  ]
+}

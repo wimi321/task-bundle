@@ -1,0 +1,3 @@
+{"type":"read_file","at":"2026-03-18T00:00:01.000Z","detail":"Read src/greet.ts"}
+{"type":"run_command","at":"2026-03-18T00:00:03.000Z","detail":"npm test"}
+{"type":"capture_diff","at":"2026-03-18T00:00:05.000Z","detail":"Saved result.diff"}

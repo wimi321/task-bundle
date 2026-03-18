@@ -1,0 +1,35 @@
+{
+  "name": "task-bundle",
+  "version": "0.1.0",
+  "description": "Portable task bundles for AI coding work.",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "taskbundle": "dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "examples",
+    "docs",
+    "templates",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "dev": "tsx src/cli/index.ts",
+    "test": "node --test --import tsx",
+    "prepack": "npm run clean && npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "commander": "^14.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.3"
+  }
+}

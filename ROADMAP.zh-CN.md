@@ -19,6 +19,8 @@ Task Bundle 目前已经从一个小型 CLI MVP，走到了“可实际使用的
 - 已完成：中英文文档
 
 ### v0.3
+- 已完成：自包含 HTML benchmark 报告导出
+- 已完成：可嵌入 README / Pages 的 SVG benchmark badge
 - 规划中：面向 benchmark 的结果字段和评分约定
 - 规划中：多 bundle 目录扫描与批量比较
 - 规划中：更多用于演示和 benchmark 的标准 example bundles

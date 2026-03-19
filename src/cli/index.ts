@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import { registerArchiveCommands } from "./commands/archive";
+import { registerBadgeCommand } from "./commands/badge";
 import { registerCompareCommand } from "./commands/compare";
 import { registerInitCommand } from "./commands/init";
 import { registerInspectCommand } from "./commands/inspect";
@@ -21,6 +22,7 @@ async function main(): Promise<void> {
   registerPackCommand(program);
   registerInspectCommand(program);
   registerCompareCommand(program);
+  registerBadgeCommand(program);
   registerArchiveCommands(program);
   registerValidateCommand(program);
   registerScanCommand(program);

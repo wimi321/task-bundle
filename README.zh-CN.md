@@ -6,7 +6,7 @@
   <img src="./assets/hero-banner.svg" alt="Task Bundle hero banner" width="100%" />
 </p>
 
-<p align="center"><strong>把 AI coding 过程整理成可分享、可比较、可重跑的任务包。</strong></p>
+<p align="center"><strong>把一次 AI coding 任务整理成干净、可搬运、可比较、可重跑、可分享的任务包。</strong></p>
 <p align="center">适合用在聊天记录太散、完整 benchmark 平台又太重的时候。</p>
 <p align="center">
   <a href="#quickstart"><strong>快速开始</strong></a> ·
@@ -23,12 +23,17 @@
 [![GitHub stars](https://img.shields.io/github/stars/wimi321/task-bundle?style=social)](https://github.com/wimi321/task-bundle/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-Task Bundle 是一个 TypeScript + Node.js CLI，用来把一次编码任务打包成可以查看、比较、归档、校验、生成报告的目录。
+<p align="center">
+  <img src="./assets/sample-benchmark-avg-score.svg" alt="示例 benchmark 平均分 badge" />
+  <img src="./assets/sample-benchmark-success-rate.svg" alt="示例 benchmark 成功率 badge" />
+</p>
+
+Task Bundle 是一个 TypeScript + Node.js CLI，用来把一次编码任务整理成干净、稳定、可搬运的任务制品，方便你查看、比较、归档、校验、生成报告并直接分享。
 
 你可以用它来：
 - 把任务输入、执行摘要、diff、事件和工作区文件放在一起
 - 比较 Codex、Claude Code、Cursor 或内部工具的运行结果，并保留元数据、哈希和 outcome 字段
-- 从一组 bundle 生成 benchmark 风格报告
+- 从一组 bundle 生成 benchmark 风格报告、可直接打开的 HTML 页面和 SVG badge
 - 为后续重跑保留足够上下文，而不是追求逐 token 一致性
 
 它比较适合这些场景：
@@ -124,9 +129,25 @@ Ranking
 2. Fix greeting punctuation | claude-code / claude-sonnet-4 | success | score 0.89
 ```
 
-也可以直接查看仓库里提交好的示例报告：
+如果你想把同一份结果导出成更适合分享和展示的 HTML 页面：
+
+```bash
+npm run dev -- report ./examples --html-out ./dist/benchmark-report.html
+```
+
+如果你还想把这些结果挂到 README、GitHub Pages 或内部文档里：
+
+```bash
+npm run dev -- badge ./examples --metric avg-score --out ./dist/avg-score.svg
+npm run dev -- badge ./examples --metric success-rate --out ./dist/success-rate.svg
+```
+
+也可以直接查看仓库里提交好的示例产物：
 - [docs/sample-benchmark-report.zh-CN.md](./docs/sample-benchmark-report.zh-CN.md)
 - [docs/sample-benchmark-report.md](./docs/sample-benchmark-report.md)
+- 浏览器可打开的 HTML 快照：`docs/sample-benchmark-report.html`
+- [assets/sample-benchmark-avg-score.svg](./assets/sample-benchmark-avg-score.svg)
+- [assets/sample-benchmark-success-rate.svg](./assets/sample-benchmark-success-rate.svg)
 
 <a id="where-it-fits"></a>
 
@@ -143,6 +164,8 @@ Ranking
 ## 为什么值得关注
 
 很多 AI coding 结果最后只留下截图、聊天记录或者一个 patch，后续几乎没法稳定比较。
+
+如果你也一直觉得“聊天记录太散、benchmark 平台太重”，Task Bundle 想补上的就是中间那层缺失的基础设施。
 
 Task Bundle 想解决的就是这个问题：把一次任务变成一个可以查看、归档、比较、校验、生成报告的稳定单元。它比较适合：
 - 想做可复现实验的 agent 作者
@@ -341,11 +364,22 @@ npm run dev -- scan ./examples
 ```
 
 ### `taskbundle report`
-生成 benchmark 风格的排行榜和可选 Markdown 报告：
+生成 benchmark 风格的排行榜，并可选导出 Markdown 或 HTML 报告：
 
 ```bash
 npm run dev -- report ./examples --out ./dist/benchmark-report.md
+npm run dev -- report ./examples --html-out ./dist/benchmark-report.html
 ```
+
+### `taskbundle badge`
+从同一个 benchmark 目录直接生成可分享的 SVG badge：
+
+```bash
+npm run dev -- badge ./examples --metric avg-score --out ./dist/avg-score.svg
+npm run dev -- badge ./examples --metric success-rate --out ./dist/success-rate.svg
+```
+
+支持的指标：`avg-score`、`success-rate`、`runs`、`best-model`。
 
 ## 示例 Bundle
 
@@ -355,7 +389,7 @@ npm run dev -- report ./examples --out ./dist/benchmark-report.md
 
 它们表达的是同一个任务，但来自不同的工具 / 模型组合，所以 `compare` 命令有真实可看的结果。
 
-你也可以直接把这个目录交给 `taskbundle report`，生成一份小型 benchmark 排行榜。
+你也可以直接把这个目录交给 `taskbundle report` 或 `taskbundle badge`，生成一份小型 benchmark 排行榜、浏览器可打开的 HTML 页面，或者可嵌入的 SVG badge。
 
 如果你想直接看一份已提交到仓库里的报告快照，可以打开 [docs/sample-benchmark-report.zh-CN.md](./docs/sample-benchmark-report.zh-CN.md)。
 

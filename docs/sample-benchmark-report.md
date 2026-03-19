@@ -2,10 +2,13 @@
 
 This page keeps a saved example of `taskbundle report` generated from the example bundles in this repository.
 
+It now sits next to a browser-ready HTML snapshot at `docs/sample-benchmark-report.html` and SVG badges in `assets/`, so the same benchmark data can move from CLI output to shareable artifacts without adding a heavier dashboard layer.
+
 ## Regenerate Locally
 
 ```bash
-npm run dev -- report ./examples --out ./dist/benchmark-report.md
+npm run dev -- report ./examples --out ./dist/benchmark-report.md --html-out ./dist/benchmark-report.html
+npm run dev -- badge ./examples --metric avg-score --out ./dist/avg-score.svg
 ```
 
 ## Snapshot
@@ -32,4 +35,5 @@ npm run dev -- report ./examples --out ./dist/benchmark-report.md
 
 - It gives readers a concrete example of the report output.
 - It shows how the example bundles can be compared without extra tooling.
+- It makes it obvious that the same directory can produce Markdown, HTML, and SVG benchmark artifacts.
 - It provides a stable link that can be referenced from the README.

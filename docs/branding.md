@@ -14,6 +14,10 @@ This repository includes the visual assets used in the README and GitHub social 
   Animated terminal walkthrough for the README quick start section.
 - `assets/terminal-showcase.svg`
   Three-panel terminal preview used to show real inspect, compare, and report output.
+- `assets/sample-benchmark-avg-score.svg`
+  Generated sample badge showing how benchmark metrics can be embedded back into README or docs.
+- `assets/sample-benchmark-success-rate.svg`
+  Generated sample badge showing the same benchmark set's success rate.
 - `assets/social-preview.svg`
   Source artwork for GitHub social preview uploads, showing compare output and a leaderboard snapshot.
 - `assets/social-preview.png`
@@ -33,4 +37,12 @@ You can regenerate the demo GIF with:
 
 ```bash
 python3 ./scripts/generate_demo_gif.py
+```
+
+You can regenerate the sample report artifacts with:
+
+```bash
+npm run dev -- report ./examples --html-out ./docs/sample-benchmark-report.html
+npm run dev -- badge ./examples --metric avg-score --out ./assets/sample-benchmark-avg-score.svg
+npm run dev -- badge ./examples --metric success-rate --out ./assets/sample-benchmark-success-rate.svg
 ```

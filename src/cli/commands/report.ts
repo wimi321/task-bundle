@@ -1,6 +1,10 @@
 import path from "node:path";
 import { Command } from "commander";
-import { generateBenchmarkReport, renderBenchmarkReportMarkdown } from "../../core/report";
+import {
+  generateBenchmarkReport,
+  renderBenchmarkReportHtml,
+  renderBenchmarkReportMarkdown
+} from "../../core/report";
 import { writeTextFile } from "../../utils/fs";
 import { printKeyValue } from "../../utils/output";
 
@@ -10,13 +14,19 @@ export function registerReportCommand(program: Command): void {
     .description("Generate a benchmark-style report for a directory of bundles.")
     .option("--json", "Print machine-readable JSON instead of text")
     .option("--out <file>", "Write a Markdown report to a file")
+    .option("--html-out <file>", "Write a self-contained HTML report to a file")
     .argument("<rootDir>", "Directory that contains bundle folders")
-    .action(async (rootDir: string, options: { json?: boolean; out?: string }) => {
+    .action(async (rootDir: string, options: { json?: boolean; out?: string; htmlOut?: string }) => {
       const report = await generateBenchmarkReport(path.resolve(rootDir));
 
       if (options.out) {
         const markdown = renderBenchmarkReportMarkdown(report);
         await writeTextFile(path.resolve(options.out), markdown);
+      }
+
+      if (options.htmlOut) {
+        const html = renderBenchmarkReportHtml(report);
+        await writeTextFile(path.resolve(options.htmlOut), html);
       }
 
       if (options.json) {
@@ -52,6 +62,11 @@ export function registerReportCommand(program: Command): void {
       if (options.out) {
         console.log("");
         console.log(`Markdown report: ${path.resolve(options.out)}`);
+      }
+
+      if (options.htmlOut) {
+        console.log("");
+        console.log(`HTML report: ${path.resolve(options.htmlOut)}`);
       }
     });
 }

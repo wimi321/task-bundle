@@ -134,3 +134,37 @@ test("report writes a markdown file", async () => {
     await rm(tempDir, { recursive: true, force: true });
   }
 });
+
+test("report writes a self-contained html file", async () => {
+  const tempDir = await makeTempDir("taskbundle-report-html-");
+
+  try {
+    const outputPath = path.join(tempDir, "report.html");
+    await runCli(["report", "./examples", "--html-out", outputPath]);
+    assert.equal(await pathExists(outputPath), true);
+
+    const html = await readFile(outputPath, "utf8");
+    assert.match(html, /<!doctype html>/i);
+    assert.match(html, /Task Bundle Benchmark Report/);
+    assert.match(html, /<h2>Ranking<\/h2>/);
+  } finally {
+    await rm(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("badge writes an svg file", async () => {
+  const tempDir = await makeTempDir("taskbundle-badge-");
+
+  try {
+    const outputPath = path.join(tempDir, "avg-score.svg");
+    await runCli(["badge", "./examples", "--metric", "avg-score", "--out", outputPath]);
+    assert.equal(await pathExists(outputPath), true);
+
+    const svg = await readFile(outputPath, "utf8");
+    assert.match(svg, /<svg/);
+    assert.match(svg, /avg score/);
+    assert.match(svg, /0\.91/);
+  } finally {
+    await rm(tempDir, { recursive: true, force: true });
+  }
+});

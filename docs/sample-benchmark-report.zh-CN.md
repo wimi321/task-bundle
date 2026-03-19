@@ -2,10 +2,13 @@
 
 这个页面保存了一份基于仓库示例 bundle 生成的 `taskbundle report` 输出，方便直接查看结果长什么样。
 
+现在它旁边还配套放了一个浏览器可直接打开的 `docs/sample-benchmark-report.html`，以及放在 `assets/` 里的 SVG badge，这样同一组 benchmark 数据就能从 CLI 结果直接变成可分享制品，而不用先搭一套更重的平台。
+
 ## 本地重新生成
 
 ```bash
-npm run dev -- report ./examples --out ./dist/benchmark-report.md
+npm run dev -- report ./examples --out ./dist/benchmark-report.md --html-out ./dist/benchmark-report.html
+npm run dev -- badge ./examples --metric avg-score --out ./dist/avg-score.svg
 ```
 
 ## 示例快照
@@ -32,4 +35,5 @@ npm run dev -- report ./examples --out ./dist/benchmark-report.md
 
 - 让读者直接看到报告输出的样子。
 - 说明仓库里的示例 bundle 可以继续拿来比较和分析。
+- 说明同一个目录还能继续产出 HTML 页面和 SVG badge。
 - README 可以稳定链接到这份示例结果。

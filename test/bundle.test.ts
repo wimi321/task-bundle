@@ -6,8 +6,13 @@ import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
 import { createBundle, createInitTemplate, inspectBundle, readBundle } from "../src/core/bundle";
+import { renderBenchmarkBadge } from "../src/core/badge";
 import { compareBundles } from "../src/core/compare";
-import { generateBenchmarkReport, renderBenchmarkReportMarkdown } from "../src/core/report";
+import {
+  generateBenchmarkReport,
+  renderBenchmarkReportHtml,
+  renderBenchmarkReportMarkdown
+} from "../src/core/report";
 import { pathExists } from "../src/utils/fs";
 
 const execFileAsync = promisify(execFile);
@@ -205,7 +210,7 @@ test("pack config with git auto captures git metadata", async () => {
   }
 });
 
-test("generateBenchmarkReport ranks bundles and produces markdown", async () => {
+test("generateBenchmarkReport ranks bundles and produces markdown and html", async () => {
   const report = await generateBenchmarkReport("/Users/haoc/Developer/task-bundle/examples");
 
   assert.equal(report.bundleCount >= 2, true);
@@ -217,4 +222,15 @@ test("generateBenchmarkReport ranks bundles and produces markdown", async () => 
   const markdown = renderBenchmarkReportMarkdown(report);
   assert.match(markdown, /# Benchmark Report/);
   assert.match(markdown, /\| Rank \| Title \| Tool \| Model \| Status \| Score \| Events \| Workspace \|/);
+
+  const html = renderBenchmarkReportHtml(report);
+  assert.match(html, /<!doctype html>/i);
+  assert.match(html, /<h1>Benchmark Report<\/h1>/);
+  assert.match(html, /<h2>Leaderboard by Tool \/ Model<\/h2>/);
+  assert.match(html, /claude-sonnet-4/);
+
+  const badge = renderBenchmarkBadge(report, "avg-score");
+  assert.match(badge, /<svg/);
+  assert.match(badge, /avg score/);
+  assert.match(badge, />0\.91</);
 });

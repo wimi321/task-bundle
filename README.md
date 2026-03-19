@@ -6,7 +6,7 @@
   <img src="./assets/hero-banner.svg" alt="Task Bundle hero banner" width="100%" />
 </p>
 
-<p align="center"><strong>Turn AI coding runs into portable, replayable task bundles.</strong></p>
+<p align="center"><strong>Turn AI coding runs into clean, portable task bundles you can compare, benchmark, replay, and share.</strong></p>
 <p align="center">Useful when chat logs are too loose and full benchmark platforms are more than you need.</p>
 <p align="center">
   <a href="#quickstart"><strong>Quick Start</strong></a> ·
@@ -23,12 +23,17 @@
 [![GitHub stars](https://img.shields.io/github/stars/wimi321/task-bundle?style=social)](https://github.com/wimi321/task-bundle/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-Task Bundle is a TypeScript + Node.js CLI for packaging one coding task into a directory you can inspect, compare, archive, validate, and report on.
+<p align="center">
+  <img src="./assets/sample-benchmark-avg-score.svg" alt="Sample benchmark average score badge" />
+  <img src="./assets/sample-benchmark-success-rate.svg" alt="Sample benchmark success rate badge" />
+</p>
+
+Task Bundle is a TypeScript + Node.js CLI for turning one AI coding task into a clean, portable artifact you can inspect, compare, archive, validate, report on, and publish.
 
 Use it to:
 - keep task inputs, summaries, diffs, events, and workspace files together
 - compare Codex, Claude Code, Cursor, or internal tools using metadata, hashes, and outcome fields
-- generate benchmark-style reports from a folder of bundles
+- generate benchmark-style reports, browser-ready HTML pages, and SVG badges from a folder of bundles
 - preserve enough context for reruns without aiming for token-perfect replay
 
 Reach for it when you want to:
@@ -124,9 +129,25 @@ Ranking
 2. Fix greeting punctuation | claude-code / claude-sonnet-4 | success | score 0.89
 ```
 
-See the committed sample report:
+Export the same data as a shareable HTML page:
+
+```bash
+npm run dev -- report ./examples --html-out ./dist/benchmark-report.html
+```
+
+Turn the same benchmark directory into embeddable badges:
+
+```bash
+npm run dev -- badge ./examples --metric avg-score --out ./dist/avg-score.svg
+npm run dev -- badge ./examples --metric success-rate --out ./dist/success-rate.svg
+```
+
+See the committed sample artifacts:
 - [docs/sample-benchmark-report.md](./docs/sample-benchmark-report.md)
 - [docs/sample-benchmark-report.zh-CN.md](./docs/sample-benchmark-report.zh-CN.md)
+- browser-ready HTML snapshot: `docs/sample-benchmark-report.html`
+- [assets/sample-benchmark-avg-score.svg](./assets/sample-benchmark-avg-score.svg)
+- [assets/sample-benchmark-success-rate.svg](./assets/sample-benchmark-success-rate.svg)
 
 <a id="where-it-fits"></a>
 
@@ -143,6 +164,8 @@ See the committed sample report:
 ## Why It Matters
 
 Most AI coding work disappears into screenshots, transcripts, or one-off patches.
+
+If chat logs feel too loose and full benchmark platforms feel too heavy, Task Bundle is the missing middle layer.
 
 Task Bundle gives you a stable task artifact you can inspect, archive, compare, validate, and report on. That makes it useful for:
 - agent builders who want reproducible tasks
@@ -341,11 +364,22 @@ npm run dev -- scan ./examples
 ```
 
 ### `taskbundle report`
-Generate a benchmark-style ranking and optional Markdown report:
+Generate a benchmark-style ranking and optional Markdown or HTML report:
 
 ```bash
 npm run dev -- report ./examples --out ./dist/benchmark-report.md
+npm run dev -- report ./examples --html-out ./dist/benchmark-report.html
 ```
+
+### `taskbundle badge`
+Generate shareable SVG badges from the same benchmark directory:
+
+```bash
+npm run dev -- badge ./examples --metric avg-score --out ./dist/avg-score.svg
+npm run dev -- badge ./examples --metric success-rate --out ./dist/success-rate.svg
+```
+
+Supported metrics: `avg-score`, `success-rate`, `runs`, `best-model`.
 
 ## Example Bundles
 
@@ -355,7 +389,7 @@ The repository includes two real examples:
 
 They represent the same task captured from different tool/model combinations so `compare` has something meaningful to show.
 
-You can also point `taskbundle report` at the same directory to generate a small benchmark-style leaderboard.
+You can also point `taskbundle report` or `taskbundle badge` at the same directory to generate a small benchmark-style leaderboard, a browser-ready HTML page, or embeddable SVG badges.
 
 For a committed snapshot of that output, see [docs/sample-benchmark-report.md](./docs/sample-benchmark-report.md).
 

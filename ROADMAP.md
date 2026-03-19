@@ -19,6 +19,8 @@ Task Bundle started as a small CLI MVP. This roadmap turns it into a practical f
 - Done: Chinese and English documentation
 
 ### v0.3
+- Done: self-contained HTML benchmark report export
+- Done: SVG benchmark badges for README and Pages embeds
 - Planned: machine-readable benchmark result fields and scoring conventions
 - Planned: bundle collections and directory scans for multi-run comparisons
 - Planned: more curated example bundles for benchmark-style demos
